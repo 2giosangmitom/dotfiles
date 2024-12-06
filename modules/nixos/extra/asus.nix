@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services = {
     asusd = {
       enable = true;
@@ -11,4 +11,5 @@
     enable = true;
     motherboard = "amd";
   };
+  systemd.services.supergfxd.path = [pkgs.pciutils];
 }

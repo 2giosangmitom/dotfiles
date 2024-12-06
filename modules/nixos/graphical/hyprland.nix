@@ -1,9 +1,8 @@
 {pkgs, ...}: {
-  services.xserver.enable = true;
-  services.xserver.xkb.layout = "us";
-
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

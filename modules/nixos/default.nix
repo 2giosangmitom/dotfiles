@@ -49,6 +49,7 @@
     yazi
     starship
     jq
+    pciutils
 
     # libraries
     vips # image processing library
