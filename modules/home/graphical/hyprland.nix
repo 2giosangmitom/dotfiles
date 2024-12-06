@@ -1,14 +1,22 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.variables = ["--all"];
+
     settings = {
-      monitor = ", preferred, auto, 1";
+      exec-once = [
+        "ibus-daemon -rxRd"
+      ];
+
+      monitor = "eDP-1,preferred,auto,1";
+
       env = [
         "XCURSOR_THEME,Vimix-Cursors"
         "HYPRCURSOR_THEME,Vimix-Cursors"
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
       ];
+
       general = {
         border_size = 2;
         gaps_in = 5;
@@ -22,17 +30,21 @@
         no_focus_fallback = true;
         resize_on_border = true;
       };
+
       group = {
         "col.border_active" = "rgb(94e2d5)";
         "col.border_inactive" = "rgb(313244)";
         "col.border_locked_active" = "rgb(94e2d5)";
         "col.border_locked_inactive" = "rgb(313244)";
       };
+
       decoration = {
         rounding = 1;
+
         shadow = {
           enabled = true;
         };
+
         blur = {
           enabled = false;
           xray = true;
@@ -46,27 +58,34 @@
           popups = true;
           popups_ignorealpha = 0.6;
         };
+
         dim_inactive = false;
       };
+
       input = {
         kb_layout = "us";
         numlock_by_default = true;
         scroll_method = "2fg";
+
         touchpad = {
           natural_scroll = true;
           tap-to-click = true;
         };
       };
+
       gestures = {
         workspace_swipe = false;
       };
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
+
       master = {
         new_status = "slave";
       };
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -74,20 +93,24 @@
         force_default_wallpaper = 0;
         disable_autoreload = true;
       };
+
       cursor = {
         no_hardware_cursors = true;
         hide_on_key_press = false;
       };
+
       animations = {
         enabled = true;
         first_launch_animation = false;
+
         bezier = [
-          "easein,0.1, 0, 0.5, 0"
-          "easeinback,0.35, 0, 0.95, -0.3"
-          "easeout,0.5, 1, 0.9, 1"
-          "easeoutback,0.35, 1.35, 0.65, 1"
-          "easeinout,0.45, 0, 0.55, 1"
+          "easein,0.1,0,0.5,0"
+          "easeinback,0.35,0,0.95,-0.3"
+          "easeout,0.5,1,0.9,1"
+          "easeoutback,0.35,1.35,0.65,1"
+          "easeinout,0.45,0,0.55,1"
         ];
+
         animation = [
           "fadeIn,1,2,easeout"
           "fadeLayersIn,1,3,easeoutback"
@@ -105,7 +128,9 @@
           "workspaces,1,2.6,easeoutback,slide"
         ];
       };
+
       "$mod" = "SUPER";
+
       bind = [
         # Useful binds
         "$mod,Return,exec,kitty"
@@ -114,7 +139,7 @@
         "$mod,P,pseudo"
         "$mod,J,togglesplit"
         "$mod SHIFT,C,exec,hyprctl reload"
-        ", Print, exec, grimblast --notify copy output"
+        ",Print,exec,grimblast --notify copy output"
         "SHIFT,Print,exec,grimblast --notify --freeze copy area"
 
         # Move focus with mod + [hjkl]
@@ -157,26 +182,30 @@
         "$mod,S,togglespecialworkspace,magic"
         "$mod SHIFT,S,movetoworkspace,special:magic"
       ];
+
       bindel = [
         # Laptop function keys
         ",XF86MonBrightnessUp,exec,light -A 10"
         ",XF86MonBrightnessDown,exec,light -U 10"
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"
+        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ];
+
       bindm = [
         # Move/resize windows with mod + LMB/RMB and dragging
         "$mod,mouse:272,movewindow"
         "$mod,mouse:273,resizewindow"
       ];
+
       windowrule = [
         "float,title:^(Open File)(.*)$"
         "float,title:^(Select a File)(.*)$"
         "float,title:^(File Upload)(.*)$"
         "center,title:^(Save As)(.*)$"
       ];
+
       windowrulev2 = [
         # Ignore maximize requests from apps
         "suppressevent maximize, class:.*"
@@ -187,6 +216,7 @@
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
       ];
+
       workspace = [
         "w[tv1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"

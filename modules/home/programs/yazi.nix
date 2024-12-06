@@ -12,7 +12,6 @@
       opener = {
         edit = [
           {
-            run = ''nvim "$@"'';
             block = true;
           }
         ];

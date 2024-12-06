@@ -1,6 +1,7 @@
 {
   imports = [
     ./programs/bash.nix
+    ./programs/fastfetch.nix
     ./programs/git.nix
     ./programs/kitty.nix
     ./programs/lazygit.nix
