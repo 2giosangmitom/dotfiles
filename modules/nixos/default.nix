@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./common/user.nix
     ./common/networking.nix
@@ -83,6 +87,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    inputs.hyprpanel.overlay
+  ];
   nix = {
     settings = {
       experimental-features = [

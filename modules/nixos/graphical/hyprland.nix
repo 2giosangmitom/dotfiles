@@ -10,6 +10,8 @@
     grimblast
     swww
     wl-clipboard
+    hyprpanel
+    rofi-wayland
   ];
 
   programs.light.enable = true;
