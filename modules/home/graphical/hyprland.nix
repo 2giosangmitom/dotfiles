@@ -6,6 +6,7 @@
     settings = {
       exec-once = [
         "ibus-daemon -rxRd"
+        "${./scripts/random_background.sh}"
       ];
 
       monitor = "eDP-1,preferred,auto,1";
@@ -139,6 +140,7 @@
         "$mod,P,pseudo"
         "$mod,J,togglesplit"
         "$mod SHIFT,C,exec,hyprctl reload"
+        "$mod,B,exec,${./scripts/random_background.sh}"
         ",Print,exec,grimblast --notify copy output"
         "SHIFT,Print,exec,grimblast --notify --freeze copy area"
 

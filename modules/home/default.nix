@@ -13,5 +13,9 @@
   ];
 
   home.stateVersion = "24.11";
+  home.file."Pictures/backgrounds" = {
+    source = ../../backgrounds;
+    recursive = true;
+  };
   programs.home-manager.enable = true;
 }
