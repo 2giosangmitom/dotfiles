@@ -7,3 +7,4 @@ assets
 ^/README.*
 ^/LICENSE.*
 .config/yazi/flavors/
+pkglist.txt
