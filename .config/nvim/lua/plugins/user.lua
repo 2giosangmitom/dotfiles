@@ -83,14 +83,4 @@ return {
       },
     },
   },
-
-  {
-    "xeluxee/competitest.nvim",
-    dependencies = "MunifTanjim/nui.nvim",
-    cmd = "CompetiTest",
-    keys = {
-      { "<leader>ct", "<cmd>CompetiTest run<cr>", desc = "Test solution (CP)" },
-    },
-    opts = {},
-  },
 }
