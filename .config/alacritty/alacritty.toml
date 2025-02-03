@@ -12,7 +12,7 @@ style = { shape = "Block" }
 thickness = 0.2
 
 [font]
-normal = { family = "JetBrainsMono NF", style = "Medium" }
+normal = { family = "BlexMono Nerd Font", style = "Medium" }
 size = 13
 
 [colors.primary]
@@ -31,7 +31,7 @@ end = { foreground = "#011502", background = "#fcc737" }
 [colors]
 line_indicator = { foreground = "#011502", background = "#f7dba7" }
 footer_bar = { foreground = "#011502", background = "#bbe5ed" }
-transparent_background_colors = true
+# transparent_background_colors = true
 
 [colors.normal]
 black = "#011502"
