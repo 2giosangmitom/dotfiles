@@ -4,8 +4,10 @@ amd-ucode
 asusctl
 base
 base-devel
+bottom
 brave-bin
 brightnessctl
+chafa
 cmake
 dbus-units
 efibootmgr
@@ -20,6 +22,7 @@ gst-plugin-pipewire
 hyprland
 imagemagick
 jq
+lazygit
 less
 libpulse
 linux
@@ -30,6 +33,7 @@ nodejs
 noto-fonts-emoji
 npm
 nvidia-open
+nvidia-prime
 nwg-look
 openssh
 orchis-theme
@@ -51,8 +55,10 @@ stow
 supergfxctl
 switcheroo-control
 swww
-ttf-ibmplex-mono-nerd
+ttf-cascadia-code-nerd
+ttf-jetbrains-mono-nerd
 ttf-roboto
+ueberzugpp
 unzip
 waybar
 wireplumber
