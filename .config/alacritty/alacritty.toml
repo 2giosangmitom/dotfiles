@@ -1,6 +1,3 @@
-[terminal]
-shell = "fish"
-
 [window]
 dynamic_padding = true
 opacity = 0.8
@@ -12,7 +9,7 @@ style = { shape = "Block" }
 thickness = 0.2
 
 [font]
-normal = { family = "BlexMono Nerd Font", style = "Medium" }
+normal = { family = "CaskaydiaCove Nerd Font", style = "Medium" }
 size = 13
 
 [colors.primary]

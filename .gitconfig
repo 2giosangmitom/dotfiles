@@ -1,3 +1,8 @@
+[gpg]
+	format = ssh
 [user]
 	name = Vo Quang Chien
 	email = 2giosangmitom@proton.me
+	signingkey = /home/chien/.ssh/id_ed25519.pub
+[commit]
+	gpgSign = true

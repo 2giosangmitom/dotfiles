@@ -1,9 +1,4 @@
-install.sh
-assets
-\.prettierrc
-\.git
-\.gitignore
-\.gitmodules
-^README.*
-^LICENSE.*
+.git
 pkglist.txt
+README.md
+assets
