@@ -4,10 +4,12 @@ amd-ucode
 asusctl
 base
 base-devel
+bear
 bottom
 brave-bin
 brightnessctl
 chafa
+clang
 cmake
 dbus-units
 efibootmgr
@@ -20,6 +22,7 @@ github-cli
 go
 gst-plugin-pipewire
 hyprland
+ibus-bamboo
 imagemagick
 jq
 lazygit
@@ -60,6 +63,8 @@ ttf-jetbrains-mono-nerd
 ttf-roboto
 ueberzugpp
 unzip
+uthash
+vimix-cursors
 waybar
 wireplumber
 wl-clipboard
