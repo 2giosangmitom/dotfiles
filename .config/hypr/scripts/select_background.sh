@@ -19,6 +19,6 @@ choice=$(fzf --reverse --preview="ueberzugpp cmd -s $SOCKET -i fzfpreview -a add
                             --max-width \$FZF_PREVIEW_COLUMNS --max-height \$FZF_PREVIEW_LINES \
                             -f {}")
 
-swww img --transition-duration 1 --transition-step 20 --transition-type wave "$choice"
+swww img --transition-duration 1 --transition-step 20 --transition-type simple "$choice"
 
 ueberzugpp cmd -s "$SOCKET" -a exit

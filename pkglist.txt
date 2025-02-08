@@ -38,6 +38,7 @@ npm
 nvidia-open
 nvidia-prime
 nwg-look
+obs-studio
 openssh
 orchis-theme
 papirus-icon-theme
@@ -68,6 +69,8 @@ vimix-cursors
 waybar
 wireplumber
 wl-clipboard
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xfsprogs
 yazi
 zoxide
