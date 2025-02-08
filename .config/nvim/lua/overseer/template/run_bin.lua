@@ -18,6 +18,11 @@ return {
     return {
       cmd = cmd,
       args = args,
+      components = {
+        { "on_output_quickfix", open = false, set_diagnostics = true },
+        "on_result_diagnostics",
+        "default",
+      },
     }
   end,
   condition = {

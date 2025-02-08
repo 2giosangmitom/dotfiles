@@ -19,7 +19,11 @@ return {
         "-o",
         output_file,
       },
-      components = { { "on_output_quickfix", open = false }, "default" },
+      components = {
+        { "on_output_quickfix", open = false, set_diagnostics = true },
+        "on_result_diagnostics",
+        "default",
+      },
     }
   end,
   condition = {
