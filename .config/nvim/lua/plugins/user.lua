@@ -21,4 +21,11 @@ return {
       templates = { "builtin", "build_cpp", "run_bin" },
     },
   },
+
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = { preset = "super-tab" },
+    },
+  },
 }
