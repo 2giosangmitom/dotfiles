@@ -19,17 +19,20 @@ ffmpeg
 fzf
 git
 github-cli
+gnome-keyring
 go
 gst-plugin-pipewire
 hyprland
 ibus-bamboo
 imagemagick
 jq
+just
 lazygit
 less
 libpulse
 linux
 linux-firmware
+man-db
 neovim
 networkmanager
 nodejs
@@ -39,6 +42,7 @@ nvidia-open
 nvidia-prime
 nwg-look
 obs-studio
+openrgb
 openssh
 orchis-theme
 papirus-icon-theme
@@ -51,6 +55,7 @@ pipewire-pulse
 polkit-gnome
 poppler
 power-profiles-daemon
+qt5-wayland
 ripgrep
 rofi-wayland
 rust
@@ -59,6 +64,7 @@ stow
 supergfxctl
 switcheroo-control
 swww
+tokei
 ttf-cascadia-code-nerd
 ttf-jetbrains-mono-nerd
 ttf-roboto
