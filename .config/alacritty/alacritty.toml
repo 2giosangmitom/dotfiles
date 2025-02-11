@@ -9,7 +9,7 @@ style = { shape = "Block" }
 thickness = 0.2
 
 [font]
-normal = { family = "CaskaydiaCove Nerd Font", style = "Medium" }
+normal = { family = "JetBrainsMono Nerd Font" }
 size = 13
 
 [colors.primary]

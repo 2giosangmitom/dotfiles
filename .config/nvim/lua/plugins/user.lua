@@ -28,4 +28,22 @@ return {
       keymap = { preset = "super-tab" },
     },
   },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        virtual_text = false,
+      },
+    },
+  },
+
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {
+      preset = "classic",
+    },
+  },
 }
