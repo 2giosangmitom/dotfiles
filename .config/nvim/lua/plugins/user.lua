@@ -4,46 +4,23 @@ return {
     dir = "~/Workspace/nightfall.nvim/",
     opts = {},
   },
-
-  {
-    "folke/tokyonight.nvim",
-    enabled = false,
-  },
-
-  {
-    "catppuccin",
-    enabled = false,
-  },
-
-  {
-    "stevearc/overseer.nvim",
-    opts = {
-      templates = { "builtin", "build_cpp", "run_bin" },
-    },
-  },
-
   {
     "saghen/blink.cmp",
     opts = {
       keymap = { preset = "super-tab" },
     },
   },
-
   {
-    "neovim/nvim-lspconfig",
+    "stevearc/overseer.nvim",
     opts = {
-      diagnostics = {
-        virtual_text = false,
-      },
+      templates = { "build_cpp" },
     },
   },
-
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {
-      preset = "classic",
+    "OXY2DEV/markview.nvim",
+    ft = { "markdown", "latex", "typst" },
+    dependencies = {
+      "saghen/blink.cmp",
     },
   },
 }

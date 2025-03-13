@@ -1,3 +1,6 @@
+[terminal]
+shell = "fish"
+
 [window]
 dynamic_padding = true
 opacity = 0.8
@@ -12,30 +15,5 @@ thickness = 0.2
 normal = { family = "JetBrainsMono Nerd Font" }
 size = 13
 
-[colors.primary]
-foreground = "#e9e9f4"
-background = "#141523"
-dim_foreground = "#e9e9f4"
-
-[colors.search]
-matches = { foreground = "#011502", background = "#edf7d2" }
-focused_match = { foreground = "#011502", background = "#bbe5ed" }
-
-[colors.hints]
-start = { foreground = "#011502", background = "#8be9fd" }
-end = { foreground = "#011502", background = "#fcc737" }
-
-[colors]
-line_indicator = { foreground = "#011502", background = "#f7dba7" }
-footer_bar = { foreground = "#011502", background = "#bbe5ed" }
-# transparent_background_colors = true
-
-[colors.normal]
-black = "#011502"
-red = "#e76b74"
-green = "#20e3b2"
-yellow = "#f2fa95"
-blue = "#8caaee"
-magenta = "#ff6bcb"
-cyan = "#8be9fd"
-white = "#ffffff"
+[mouse]
+hide_when_typing = true

@@ -1,4 +1,5 @@
-.git
-pkglist.txt
 README.md
-assets
+install.sh
+.git
+fish_variables
+.gitignore
