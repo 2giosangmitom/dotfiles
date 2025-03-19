@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Start ibus with necessary options
+# Start ibus
 ibus-daemon -rxRd
 
 # Directory containing wallpapers

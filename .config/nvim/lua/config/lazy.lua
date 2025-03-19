@@ -16,22 +16,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "deeper-night" } },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "nightfall" } },
     { import = "plugins" },
-  },
-  pkg = {
-    sources = {
-      "lazy",
-    },
-  },
-  rocks = {
-    enabled = false,
   },
   defaults = {
     lazy = true,
     version = false,
   },
-  install = { colorscheme = { "nightfall", "habamax" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = false,
     notify = false,
@@ -39,33 +31,11 @@ require("lazy").setup({
   performance = {
     rtp = {
       disabled_plugins = {
-        "2html_plugin",
-        "tohtml",
-        "getscript",
-        "getscriptPlugin",
         "gzip",
-        "logipat",
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "matchit",
-        "tar",
         "tarPlugin",
-        "rrhelper",
-        "spellfile_plugin",
-        "vimball",
-        "vimballPlugin",
-        "zip",
-        "zipPlugin",
+        "tohtml",
         "tutor",
-        "rplugin",
-        "syntax",
-        "synmenu",
-        "optwin",
-        "compiler",
-        "bugreport",
-        "ftplugin",
+        "zipPlugin",
       },
     },
   },
