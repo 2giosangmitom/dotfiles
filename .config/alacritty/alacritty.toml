@@ -1,5 +1,8 @@
 [terminal]
-shell = "fish"
+shell = "tmux"
+
+[env]
+TERM = "tmux-256color"
 
 [window]
 dynamic_padding = true
@@ -12,8 +15,11 @@ style = { shape = "Block" }
 thickness = 0.2
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font" }
 size = 13
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 
 [mouse]
 hide_when_typing = true
