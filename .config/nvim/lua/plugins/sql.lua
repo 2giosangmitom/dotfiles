@@ -13,14 +13,14 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = { "sqlfluff" },
+      ensure_installed = { "sqruff" },
     },
   },
   {
     "mfussenegger/nvim-lint",
     opts = {
       linters_by_ft = {
-        sql = { "sqlfluff" },
+        sql = { "sqruff" },
       },
     },
   },
@@ -28,11 +28,11 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        sql = { "sqlfluff" },
+        sql = { "sqruff" },
       },
       formatters = {
-        sqlfluff = {
-          args = { "fix", "--dialect=ansi", "-" },
+        sqruff = {
+          args = { "fix", "--force", "-" },
           require_cwd = false,
         },
       },
