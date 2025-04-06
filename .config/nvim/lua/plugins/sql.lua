@@ -1,3 +1,10 @@
+vim.lsp.config.sqruff = {
+  cmd = { "sqruff", "lsp" },
+  filetypes = { "sql" },
+}
+
+vim.lsp.enable({ "sqruff" })
+
 return {
   {
     "kndndrj/nvim-dbee",
@@ -14,28 +21,6 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = { "sqruff" },
-    },
-  },
-  {
-    "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        sql = { "sqruff" },
-      },
-    },
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        sql = { "sqruff" },
-      },
-      formatters = {
-        sqruff = {
-          args = { "fix", "--force", "-" },
-          require_cwd = false,
-        },
-      },
     },
   },
 }
