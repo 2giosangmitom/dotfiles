@@ -12,6 +12,8 @@ application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
+x-scheme-handler/mailto=brave-browser.desktop
+x-scheme-handler/webcal=brave-browser.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
