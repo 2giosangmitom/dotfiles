@@ -1,8 +1,5 @@
 [terminal]
-shell = "tmux"
-
-[env]
-TERM = "tmux-256color"
+shell = "fish"
 
 [window]
 dynamic_padding = true
