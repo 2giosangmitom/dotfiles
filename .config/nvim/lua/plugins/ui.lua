@@ -1,7 +1,17 @@
 return {
-  {
-    "2giosangmitom/nightfall.nvim",
-    dir = "~/Workspace/nightfall.nvim/",
-    opts = {},
-  },
+	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		opts = {},
+	},
+	{
+		"echasnovski/mini.tabline",
+		event = { "BufNewFile", "BufReadPost" },
+		opts = {},
+	},
+	{
+		"echasnovski/mini.statusline",
+		event = "VeryLazy",
+		opts = {},
+	},
 }
