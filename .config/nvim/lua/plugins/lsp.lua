@@ -66,6 +66,22 @@ return {
 					},
 				},
 				volar = {},
+				yamlls = {
+					settings = {
+						redhat = { telemetry = { enabled = false } },
+						yaml = {
+							keyOrdering = false,
+							format = {
+								enable = true,
+							},
+							validate = true,
+						},
+					},
+				},
+				taplo = {},
+				dockerls = {},
+				docker_compose_language_service = {},
+				eslint = {},
 			},
 		},
 		config = function(_, opts)
