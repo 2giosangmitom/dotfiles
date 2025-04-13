@@ -1,3 +1,5 @@
+local path = vim.fn.stdpath("data") .. "/lazy/"
+
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -15,6 +17,7 @@ return {
 								library = {
 									vim.env.VIMRUNTIME,
 									"${3rd}/luv/library",
+									path .. "mini.sessions",
 								},
 							},
 							codeLens = {
