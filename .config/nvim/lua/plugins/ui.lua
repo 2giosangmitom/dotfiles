@@ -22,6 +22,14 @@ return {
 	{
 		"echasnovski/mini.indentscope",
 		event = "VeryLazy",
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "lazy" },
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
 		opts = {
 			symbol = "│",
 			options = { try_as_border = true },
