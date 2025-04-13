@@ -40,6 +40,32 @@ return {
 						},
 					},
 				},
+				clangd = {
+					cmd = {
+						"/usr/bin/clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--completion-style=detailed",
+						"--fallback-style=google",
+					},
+				},
+				ts_ls = {
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/usr/lib/node_modules/@vue/typescript-plugin/",
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"typescript",
+						"vue",
+					},
+				},
+				volar = {},
 			},
 		},
 		config = function(_, opts)
