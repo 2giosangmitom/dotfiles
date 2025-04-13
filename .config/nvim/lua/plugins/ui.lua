@@ -24,10 +24,10 @@ return {
           end
 
           return MiniStatusline.combine_groups({
-            { hl = mode_hl, strings = { string.upper(mode) } },
-            "%<", -- Mark general truncate point
+            { hl = mode_hl,                  strings = { string.upper(mode) } },
+            "%<",
             { hl = "MiniStatuslineFilename", strings = { vim.fn.expand("%:t") } },
-            "%=", -- End left alignment
+            "%=",
             { hl = mode_hl, strings = { location() } },
           })
         end,
@@ -49,6 +49,9 @@ return {
       input = { enabled = true },
       notifier = { enabled = true },
       scope = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      quickfile = { enabled = true },
     },
   },
 }

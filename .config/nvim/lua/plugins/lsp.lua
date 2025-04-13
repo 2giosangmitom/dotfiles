@@ -4,6 +4,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
     opts = {
       servers = {
         lua_ls = {

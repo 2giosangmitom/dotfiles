@@ -16,3 +16,6 @@ map("n", "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Clear highlights
 map("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlights" })
+
+-- Terminal
+map("t", "<esc>", "<C-\\><C-n>", { desc = "Back to normal mode" })

@@ -35,7 +35,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    dependencies = { "igorlfs/nvim-dap-view" },
+    dependencies = { "igorlfs/nvim-dap-view", "williamboman/mason.nvim" },
     keys = {
       {
         "<leader>dB",
@@ -128,20 +128,64 @@ return {
 
       local signs = {
         DapBreakpoint = { "", "DiagnosticInfo" },
-        DapBreakpointCondition = { "" },
-        DapBreakpointRejected = { "" },
-        DapLogPoint = { "󰛿" },
-        DapStopped = { "󰁕", "DiagnosticWarn" },
+        DapBreakpointCondition = { "", "DiagnosticInfo" },
+        DapBreakpointRejected = { "", "DiagnosticError" },
+        DapLogPoint = { "󰛿", "DiagnosticInfo" },
+        DapStopped = { "󰁕", "DiagnosticWarn", "DapStoppedLine" },
       }
 
       for sign, icon in pairs(signs) do
         vim.fn.sign_define(sign, { text = icon[1], texthl = icon[2], linehl = icon[3], numhl = icon[3] })
       end
+
+      -- Config adapters
+      local dap = require("dap")
+      local dv = require("dap-view")
+      dap.listeners.before.attach["dap-view-config"] = function()
+        dv.open()
+      end
+      dap.listeners.before.launch["dap-view-config"] = function()
+        dv.open()
+      end
+      dap.listeners.before.event_terminated["dap-view-config"] = function()
+        dv.close()
+      end
+      dap.listeners.before.event_exited["dap-view-config"] = function()
+        dv.close()
+      end
+
+      dap.adapters["codelldb"] = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          command = "codelldb",
+          args = { "--port", "${port}", },
+        },
+      }
+
+      for _, lang in ipairs({ "c", "cpp" }) do
+        dap.configurations[lang] = {
+          {
+            name = 'LLDB: Launch',
+            type = 'codelldb',
+            request = 'launch',
+            program = function()
+              return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = '${workspaceFolder}',
+            console = 'integratedTerminal',
+          },
+        }
+      end
     end,
   },
   {
     "igorlfs/nvim-dap-view",
-    opts = {},
+    opts = {
+      winbar = {
+        default_section = "scopes",
+      },
+    },
   },
   {
     "mfussenegger/nvim-lint",
