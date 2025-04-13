@@ -86,4 +86,39 @@ return {
 		main = "mini.git",
 		opts = {},
 	},
+	{
+		"kylechui/nvim-surround",
+		version = "^3.0.0",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = "VeryLazy",
+		build = ":TSUpdate",
+		opts = {
+			ensure_installed = {
+				"c",
+				"lua",
+				"vim",
+				"vimdoc",
+				"query",
+				"markdown",
+				"markdown_inline",
+				"typescript",
+				"javascript",
+				"jsdoc",
+				"html",
+				"vue",
+				"css",
+				"cpp",
+        "nix",
+        "bash",
+			},
+			additional_vim_regex_highlighting = false,
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
 }

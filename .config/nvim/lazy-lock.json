@@ -12,5 +12,7 @@
   "mini.splitjoin": { "branch": "main", "commit": "70240d5d3881ff1b2b1d7902450f98a6fa303800" },
   "mini.statusline": { "branch": "main", "commit": "e331175f10d9f400b42523b3890841aba202ce16" },
   "mini.tabline": { "branch": "main", "commit": "ff7a050721352580184db1ff203286c1032d5b54" },
-  "nvim-lspconfig": { "branch": "master", "commit": "b6936cb85d1e95b5ff00016b1185ab1a14450579" }
+  "nvim-lspconfig": { "branch": "master", "commit": "b6936cb85d1e95b5ff00016b1185ab1a14450579" },
+  "nvim-surround": { "branch": "main", "commit": "caf6f633d4d77a29b6e265b560c5a035d171a913" },
+  "nvim-treesitter": { "branch": "master", "commit": "0e21ee8df6235511c02bab4a5b391d18e165a58d" }
 }
