@@ -6,15 +6,22 @@ return {
 			"echasnovski/mini.icons",
 		},
 		init = function()
-			vim.ui.select = function(...)
-				require("fzf-lua").register_ui_select()
-				return vim.ui.select(...)
-			end
+			require("fzf-lua").register_ui_select()
 		end,
 		keys = {
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
 		},
-		opts = {},
+		opts = {
+			winopts = {
+				width = 0.8,
+				height = 0.8,
+				row = 0.5,
+				col = 0.5,
+				preview = {
+					scrollchars = { "┃" },
+				},
+			},
+		},
 	},
 	{
 		"echasnovski/mini.sessions",
@@ -55,6 +62,26 @@ return {
 		keys = {
 			{ "gS", desc = "Toggle splitjoin" },
 		},
+		opts = {},
+	},
+	{
+		"echasnovski/mini.diff",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			view = {
+				style = "sign",
+				signs = {
+					add = "▎",
+					change = "▎",
+					delete = "",
+				},
+			},
+		},
+	},
+	{
+		"echasnovski/mini-git",
+		cmd = "Git",
+		main = "mini.git",
 		opts = {},
 	},
 }
