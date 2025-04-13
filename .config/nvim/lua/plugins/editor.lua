@@ -12,6 +12,8 @@ return {
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
 		},
 		opts = {
+			prompt = " ",
+			files = { cwd_prompt = false },
 			winopts = {
 				width = 0.8,
 				height = 0.8,
