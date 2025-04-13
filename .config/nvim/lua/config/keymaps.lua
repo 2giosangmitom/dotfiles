@@ -12,3 +12,6 @@ map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- Save
 map("n", "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- Clear highlights
+map("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlights" })
