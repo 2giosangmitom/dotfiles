@@ -85,13 +85,19 @@ return {
 
           -- Tabsize
           local tabsize = function() return "󰌒 " .. vim.bo.tabstop end
+
+          -- Diff
           local diff = MiniStatusline.section_diff({ trunc_width = 80, icon = "" })
+
+          -- Filename
+          local filename = MiniStatusline.section_filename({ trunc_width = 40 })
 
           return MiniStatusline.combine_groups({
             { hl = mode_hl, strings = { string.upper(mode) } },
             "%<",
             { hl = mode_hl .. "B", strings = { git } },
             "%<",
+            { hl = mode_hl .. "C", strings = { filename } },
             { hl = mode_hl .. "C", strings = { diff } },
             { hl = mode_hl .. "C", strings = { diagnostics() } },
             "%=",
