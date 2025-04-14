@@ -40,15 +40,7 @@ return {
             return "  " .. dap.status()
           end
           local tabsize = function() return "󰌒 " .. vim.bo.tabstop end
-          local diff = function()
-            local summary = vim.b.minidiff_summary
-            if not summary then return "" end
-            local res = {}
-            if summary.add > 0 then table.insert(res, " " .. summary.add) end
-            if summary.change > 0 then table.insert(res, " " .. summary.change) end
-            if summary.delete > 0 then table.insert(res, " " .. summary.delete) end
-            return table.concat(res, " ")
-          end
+          local diff = vim.b.minidiff_summary_string
 
           return MiniStatusline.combine_groups({
             { hl = mode_hl, strings = { string.upper(mode) } },
@@ -56,7 +48,7 @@ return {
             { hl = "MiniStatuslineB", strings = { git } },
             "%<",
             { hl = "MiniStatuslineC", strings = { diagnostics } },
-            { hl = "MiniStatuslineC", strings = { diff() } },
+            { hl = "MiniStatuslineC", strings = { diff } },
             "%=",
             { hl = "MiniStatuslineC", strings = { search } },
             { hl = "MiniStatuslineC", strings = { dap_status() } },
