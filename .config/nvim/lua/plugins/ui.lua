@@ -20,41 +20,86 @@ return {
     opts = {
       content = {
         active = function()
+          -- Mode
           local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+
+          -- Git info
           local git = MiniStatusline.section_git({ trunc_width = 40 })
-          local diagnostics = MiniStatusline.section_diagnostics({
-            trunc_width = 75,
-            icon = "",
-            signs = { ERROR = " ", WARN = " ", INFO = "󰋼 ", HINT = "󰌵 " },
-          })
+
+          -- Diagnostics
+          local diagnostics = function()
+            local diags = vim.diagnostic.get(0)
+            if vim.tbl_isempty(diags) then return "" end
+
+            -- Count diagnostics by severity
+            local counts = {}
+            for _, d in ipairs(diags) do
+              counts[d.severity] = (counts[d.severity] or 0) + 1
+            end
+
+            local severity = vim.diagnostic.severity
+            local levels = { "ERROR", "WARN", "INFO", "HINT" }
+
+            local signs = {
+              ERROR = " ",
+              WARN = " ",
+              INFO = "󰋼 ",
+              HINT = "󰌵 ",
+            }
+
+            local hl_groups = {
+              ERROR = "%#DiagnosticError#",
+              WARN = "%#DiagnosticWarn#",
+              INFO = "%#DiagnosticInfo#",
+              HINT = "%#DiagnosticHint#",
+            }
+
+            local parts = {}
+            for _, level in ipairs(levels) do
+              local count = counts[severity[level]]
+              if count then table.insert(parts, hl_groups[level] .. signs[level] .. count .. "%#StatusLine#") end
+            end
+
+            return table.concat(parts, " ")
+          end
+
+          -- File info
           local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+
+          -- Search count
           local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+          -- Location
           local location = function()
             local line = vim.fn.line(".")
             local col = vim.fn.charcol(".")
             return string.format("%3d:%-2d", line, col)
           end
+
+          -- DAP status
           local dap_status = function()
             local dap = require("dap")
             if dap.status() == "" then return "" end
             return "  " .. dap.status()
           end
+
+          -- Tabsize
           local tabsize = function() return "󰌒 " .. vim.bo.tabstop end
-          local diff = vim.b.minidiff_summary_string
+          local diff = MiniStatusline.section_diff({ trunc_width = 80, icon = "" })
 
           return MiniStatusline.combine_groups({
             { hl = mode_hl, strings = { string.upper(mode) } },
             "%<",
-            { hl = "MiniStatuslineB", strings = { git } },
+            { hl = mode_hl .. "B", strings = { git } },
             "%<",
-            { hl = "MiniStatuslineC", strings = { diagnostics } },
-            { hl = "MiniStatuslineC", strings = { diff } },
+            { hl = mode_hl .. "C", strings = { diff } },
+            { hl = mode_hl .. "C", strings = { diagnostics() } },
             "%=",
-            { hl = "MiniStatuslineC", strings = { search } },
-            { hl = "MiniStatuslineC", strings = { dap_status() } },
-            { hl = "MiniStatuslineC", strings = { fileinfo } },
+            { hl = mode_hl .. "C", strings = { search } },
+            { hl = mode_hl .. "C", strings = { dap_status() } },
+            { hl = mode_hl .. "C", strings = { fileinfo } },
             "%<",
-            { hl = "MiniStatuslineB", strings = { tabsize() } },
+            { hl = mode_hl .. "B", strings = { tabsize() } },
             "%<",
             { hl = mode_hl, strings = { location() } },
           })

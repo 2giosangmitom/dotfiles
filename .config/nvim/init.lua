@@ -35,6 +35,3 @@ require("lazy").setup({
     notify = false,
   },
 })
-
--- Change default colorscheme
-vim.cmd("colorscheme nightfall")

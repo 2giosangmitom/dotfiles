@@ -70,10 +70,14 @@ return {
         pattern = "MiniDiffUpdated",
         callback = function(e)
           local summary = vim.b[e.buf].minidiff_summary
+          if not summary then
+            vim.b[e.buf].minidiff_summary_string = ""
+            return
+          end
           local res = {}
-          if summary.add > 0 then table.insert(res, " " .. summary.add) end
-          if summary.change > 0 then table.insert(res, " " .. summary.change) end
-          if summary.delete > 0 then table.insert(res, " " .. summary.delete) end
+          if summary.add > 0 then table.insert(res, "%#Added# " .. summary.add .. "%#StatusLine#") end
+          if summary.change > 0 then table.insert(res, "%#Changed# " .. summary.change .. "%#StatusLine#") end
+          if summary.delete > 0 then table.insert(res, "%#Removed# " .. summary.delete .. "%#StatusLine#") end
           vim.b[e.buf].minidiff_summary_string = table.concat(res, " ")
         end,
       })

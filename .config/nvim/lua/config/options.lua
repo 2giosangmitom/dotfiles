@@ -24,6 +24,7 @@ opt.pumheight = 10
 opt.scrolloff = 4
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.sidescrolloff = 8
+opt.termguicolors = true
 
 -- Indent
 opt.shiftwidth = 2
