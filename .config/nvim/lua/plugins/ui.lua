@@ -15,13 +15,13 @@ return {
     event = "VeryLazy",
     dependencies = {
       "echasnovski/mini-git",
+      "echasnovski/mini.diff",
     },
     opts = {
       content = {
         active = function()
           local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
           local git = MiniStatusline.section_git({ trunc_width = 40 })
-          local diff = MiniStatusline.section_diff({ trunc_width = 75, icon = "" })
           local diagnostics = MiniStatusline.section_diagnostics({
             trunc_width = 75,
             icon = "",
@@ -40,6 +40,15 @@ return {
             return "  " .. dap.status()
           end
           local tabsize = function() return "󰌒 " .. vim.bo.tabstop end
+          local diff = function()
+            local summary = vim.b.minidiff_summary
+            if not summary then return "" end
+            local res = {}
+            if summary.add > 0 then table.insert(res, " " .. summary.add) end
+            if summary.change > 0 then table.insert(res, " " .. summary.change) end
+            if summary.delete > 0 then table.insert(res, " " .. summary.delete) end
+            return table.concat(res, " ")
+          end
 
           return MiniStatusline.combine_groups({
             { hl = mode_hl, strings = { string.upper(mode) } },
@@ -47,7 +56,7 @@ return {
             { hl = "MiniStatuslineB", strings = { git } },
             "%<",
             { hl = "MiniStatuslineC", strings = { diagnostics } },
-            { hl = "MiniStatuslineC", strings = { diff } },
+            { hl = "MiniStatuslineC", strings = { diff() } },
             "%=",
             { hl = "MiniStatuslineC", strings = { search } },
             { hl = "MiniStatuslineC", strings = { dap_status() } },
