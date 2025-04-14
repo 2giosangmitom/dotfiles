@@ -7,6 +7,7 @@ return {
     },
     keys = {
       { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find files" },
+      { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "Find marks" },
     },
     init = function() require("fzf-lua").register_ui_select() end,
     opts = {
@@ -64,9 +65,22 @@ return {
   {
     "echasnovski/mini.diff",
     event = { "BufReadPost", "BufNewFile" },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniDiffUpdated",
+        callback = function(e)
+          local summary = vim.b[e.buf].minidiff_summary
+          local res = {}
+          if summary.add > 0 then table.insert(res, " " .. summary.add) end
+          if summary.change > 0 then table.insert(res, " " .. summary.change) end
+          if summary.delete > 0 then table.insert(res, " " .. summary.delete) end
+          vim.b[e.buf].minidiff_summary_string = table.concat(res, " ")
+        end,
+      })
+    end,
     opts = {
       view = {
-        style = "number",
+        style = "sign",
         signs = {
           add = "▎",
           change = "▎",

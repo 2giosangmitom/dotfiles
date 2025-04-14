@@ -141,39 +141,29 @@ return {
       -- Config adapters
       local dap = require("dap")
       local dv = require("dap-view")
-      dap.listeners.before.attach["dap-view-config"] = function()
-        dv.open()
-      end
-      dap.listeners.before.launch["dap-view-config"] = function()
-        dv.open()
-      end
-      dap.listeners.before.event_terminated["dap-view-config"] = function()
-        dv.close()
-      end
-      dap.listeners.before.event_exited["dap-view-config"] = function()
-        dv.close()
-      end
+      dap.listeners.before.attach["dap-view-config"] = function() dv.open() end
+      dap.listeners.before.launch["dap-view-config"] = function() dv.open() end
+      dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
+      dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
 
       dap.adapters["codelldb"] = {
         type = "server",
         port = "${port}",
         executable = {
           command = "codelldb",
-          args = { "--port", "${port}", },
+          args = { "--port", "${port}" },
         },
       }
 
       for _, lang in ipairs({ "c", "cpp" }) do
         dap.configurations[lang] = {
           {
-            name = 'LLDB: Launch',
-            type = 'codelldb',
-            request = 'launch',
-            program = function()
-              return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-            cwd = '${workspaceFolder}',
-            console = 'integratedTerminal',
+            name = "LLDB: Launch",
+            type = "codelldb",
+            request = "launch",
+            program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+            cwd = "${workspaceFolder}",
+            console = "integratedTerminal",
           },
         }
       end

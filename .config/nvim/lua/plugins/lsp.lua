@@ -22,6 +22,8 @@ return {
                   "${3rd}/luv/library",
                   path .. "mini.sessions",
                   path .. "mini.statusline",
+                  path .. "snacks.nvim",
+                  path .. "mini-git",
                 },
               },
               codeLens = {

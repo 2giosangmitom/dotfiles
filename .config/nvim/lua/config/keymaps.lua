@@ -19,3 +19,9 @@ map("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlights" })
 
 -- Terminal
 map("t", "<esc>", "<C-\\><C-n>", { desc = "Back to normal mode" })
+
+-- Window management
+map("n", "<C-h>", "<C-w>h", { desc = "Switch to left window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Switch to right window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Switch to below window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Switch to above window" })

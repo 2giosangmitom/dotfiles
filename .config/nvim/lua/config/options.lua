@@ -30,11 +30,16 @@ opt.shiftwidth = 2
 opt.tabstop = 2
 opt.expandtab = true
 opt.smartindent = true
+opt.shiftround = true
 
 -- General
 opt.updatetime = 200
+opt.wrap = false
+opt.smartcase = true
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.splitbelow = true
+opt.completeopt = "menu,menuone,noselect"
+opt.confirm = true
 opt.splitkeep = "screen"
 opt.splitright = true
 opt.undofile = true
@@ -43,8 +48,17 @@ opt.virtualedit = "block"
 opt.wildmode = "longest:full,full"
 opt.ignorecase = true
 opt.smoothscroll = true
+opt.showcmd = false
 
 -- Diagnostic
 vim.diagnostic.config({
   virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "󰋼",
+      [vim.diagnostic.severity.HINT] = "󰌵",
+    },
+  },
 })
