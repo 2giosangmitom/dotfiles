@@ -1,0 +1,130 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "spacing": 0,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "reload_style_on_change": false,
+  "margin-right": 10,
+  "margin-left": 10,
+  "modules-left": ["clock", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "backlight",
+    "battery",
+    "group/system",
+    "power-profiles-daemon",
+    "tray"
+  ],
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": ["memory", "temperature", "cpu", "disk"]
+  },
+  "power-profiles-daemon": {
+    "format": "<span color='#20e3b2'>{icon}</span>  {profile}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true
+  },
+  "backlight": {
+    "format": "<span color='#f7dba7'>{icon}</span> {percent}%",
+    "tooltip": false,
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "scroll-step": 1
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "<span color='#e2adf2'></span> {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "clock": {
+    "format": "<span color='#bbe5ed'>󰥔</span> {:%H:%M - %a, %d %b}",
+    "tooltip": false
+  },
+  "temperature": {
+    "format": "<span color='#beb8eb'></span> {temperatureC}°C",
+    "critical-threshold": 90,
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "<span color='#9a86fd'>{icon}</span> {volume}%",
+    "format-muted": "<span color='#ff5555'></span> Muted",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "format-icons": ["", "", ""],
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "<span color='#ea9010'>{icon}</span> {ifname}",
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "<span color='#ea9010'>󰈀</span> {ifname}",
+    "format-disconnected": "<span color='#ea9010'>󰇧</span> Disconnected",
+    "tooltip-format-wifi": "Connected to {essid}\nSignal strength: {signalStrength}%",
+    "tooltip-format-ethernet": "Ethernet: {ifname}",
+    "tooltip-format-disconnected": "No network connection"
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "<span color='#a1e44d'>{icon}</span> {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip": false
+  },
+  "disk": {
+    "interval": 30,
+    "format": "<span color='#ff6bcb'>󰋊</span> {percentage_used}%",
+    "path": "/",
+    "unit": "GiB",
+    "tooltip-format": "{used} used out of {total} on {path}\nUsage: {percentage_used}%"
+  },
+  "memory": {
+    "format": "<span color='#f2fa95'></span> {used:0.1f}GiB/{total:0.1f}GiB",
+    "tooltip-format": "RAM used: {percentage}%\nSwap used: {swapUsed}GiB\nTotal swap: {swapTotal}GiB"
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 15
+  }
+}
