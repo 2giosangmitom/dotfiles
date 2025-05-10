@@ -3,7 +3,7 @@ shell = "fish"
 
 [window]
 dynamic_padding = true
-opacity = 0.9
+opacity = 0.8
 blur = true
 dimensions = { columns = 600, lines = 100 }
 
