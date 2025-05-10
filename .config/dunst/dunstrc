@@ -54,14 +54,20 @@ mouse_left_click = context, close_current
 mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
 
+[global]
+frame_color = "#89b4fa"
+separator_color= frame
+highlight = "#89b4fa"
+
 [urgency_low]
-    background = "#6592A380"
-    foreground = "#CCF1FFE6"
-    frame_color = "#6592A303"
-    timeout = 5
+background = "#1e1e2e"
+foreground = "#cdd6f4"
 
 [urgency_normal]
-    background = "#3A4A6B80"
-    foreground = "#CCDDFFE6"
-    frame_color = "#3A4A6B03"
-    timeout = 5
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"

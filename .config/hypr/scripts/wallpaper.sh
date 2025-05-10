@@ -25,7 +25,7 @@ if [[ -d "$DIR" ]]; then
     exit 1
   fi
 
-  # Set the wallpaper with a transition
+  # Set the wallpaper
   if ! swww img -t wipe --transition-duration 1 "$random"; then
     echo "Failed to set wallpaper with swww" >&2
     exit 1
