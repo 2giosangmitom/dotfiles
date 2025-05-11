@@ -14,7 +14,6 @@
   "modules-center": [],
   "modules-right": [
     "pulseaudio",
-    "network",
     "backlight",
     "battery",
     "group/system",
@@ -93,15 +92,6 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "format-icons": ["", "", ""],
     "tooltip": false,
-  },
-  "network": {
-    "format-wifi": "<span color='#ea9010'>{icon}</span> {ifname}",
-    "format-icons": ["󰤟", "󰤢", "󰤨"],
-    "format-ethernet": "<span color='#ea9010'>󰈀</span> {ifname}",
-    "format-disconnected": "<span color='#ea9010'>󰇧</span> Disconnected",
-    "tooltip-format-wifi": "Connected to {essid}\nSignal strength: {signalStrength}%",
-    "tooltip-format-ethernet": "Ethernet: {ifname}",
-    "tooltip-format-disconnected": "No network connection",
   },
   "battery": {
     "states": {
