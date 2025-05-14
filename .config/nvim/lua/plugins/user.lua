@@ -1,13 +1,23 @@
 return {
   {
-    "folke/which-key.nvim",
+    "2giosangmitom/nightfall.nvim",
+    dir = "~/Workspace/nightfall.nvim/",
+    opts = {},
+  },
+  {
+    "LazyVim/LazyVim",
     opts = {
-      preset = "helix",
+      colorscheme = "tokyonight-night",
     },
   },
   {
-    "2giosangmitom/nightfall.nvim",
-    dir = "~/Workspace/nightfall.nvim",
+    "kawre/leetcode.nvim",
+    cmd = "Leet",
+    dependencies = {
+      "ibhagwan/fzf-lua",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
     opts = {},
   },
 }
