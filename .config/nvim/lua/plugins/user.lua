@@ -1,13 +1,13 @@
 return {
   {
-    "folke/which-key.nvim",
-    opts = {
-      preset = "helix",
-    },
+    "2giosangmitom/nightfall.nvim",
+    dir = "~/Workspace/nightfall.nvim/",
+    opts = {},
   },
   {
-    "2giosangmitom/nightfall.nvim",
-    dir = "~/Workspace/nightfall.nvim",
-    opts = {},
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "tokyonight-night",
+    },
   },
 }
