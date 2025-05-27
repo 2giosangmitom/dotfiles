@@ -10,4 +10,8 @@ zoxide init fish | source
 # Enable fzf integration
 fzf --fish | source
 
+# Aliases
+alias ls=eza
+
+# Extend PATH
 set PATH $PATH $HOME/.local/bin/
