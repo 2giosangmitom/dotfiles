@@ -13,6 +13,7 @@
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.nix",
+    "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.lang.toml",
@@ -29,4 +30,3 @@
   },
   "version": 8
 }
-
