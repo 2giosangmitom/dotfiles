@@ -1,8 +1,11 @@
 return {
   {
     "2giosangmitom/nightfall.nvim",
-    -- dir = "~/Workspace/nightfall.nvim/",
-    opts = {},
+    dir = "~/Workspace/nightfall.nvim/",
+    opts = {
+      transparent = true,
+      dim_inactive = true,
+    },
   },
   {
     "LazyVim/LazyVim",
