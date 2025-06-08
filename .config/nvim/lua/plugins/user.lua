@@ -14,16 +14,6 @@ return {
     },
   },
   {
-    "kawre/leetcode.nvim",
-    cmd = "Leet",
-    dependencies = {
-      "ibhagwan/fzf-lua",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    opts = {},
-  },
-  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     opts = {},
@@ -37,16 +27,6 @@ return {
         },
       },
     },
-  },
-  {
-    "OXY2DEV/helpview.nvim",
-    ft = { "help" },
-    opts = {},
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    ft = { "markdown" },
-    opts = {},
   },
   {
     "mikavilpas/yazi.nvim",
@@ -73,5 +53,17 @@ return {
     build = ":Cord update",
     event = "VeryLazy",
     opts = {},
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_pending = " ",
+          package_installed = " ",
+          package_uninstalled = " ",
+        },
+      },
+    },
   },
 }
