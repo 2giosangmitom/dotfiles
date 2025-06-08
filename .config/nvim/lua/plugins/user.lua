@@ -2,31 +2,15 @@ return {
   {
     "2giosangmitom/nightfall.nvim",
     dir = "~/Workspace/nightfall.nvim/",
+    lazy = false,
+    priority = 1000,
     opts = {
       transparent = true,
-      dim_inactive = true,
     },
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "nightfall",
-    },
-  },
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {},
-  },
-  {
-    "folke/noice.nvim",
-    opts = {
-      lsp = {
-        progress = {
-          enabled = false,
-        },
-      },
-    },
+    config = function(_, opts)
+      require("nightfall").setup(opts)
+      vim.cmd("colorscheme nightfall")
+    end,
   },
   {
     "mikavilpas/yazi.nvim",
