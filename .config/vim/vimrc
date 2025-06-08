@@ -1,0 +1,68 @@
+" ========== General Settings ==========
+set nocompatible              " Disable Vi compatibility
+set encoding=utf-8            " Use UTF-8 encoding
+set number                    " Show absolute line numbers
+set relativenumber            " Show relative line numbers
+set showcmd                   " Show command in the status line
+set cursorline                " Highlight the current line
+set wildmenu                  " Enhanced command-line completion
+set lazyredraw                " Redraw only when needed for performance
+set showmatch                 " Highlight matching [{()}]
+set incsearch                 " Incremental search
+set hlsearch                  " Highlight search results
+set ignorecase                " Case-insensitive searching...
+set smartcase                 " ...unless uppercase letter in search
+set hidden                    " Allow switching unsaved buffers
+set clipboard=unnamedplus     " Use system clipboard
+set mouse=a                   " Enable mouse support
+
+" ========== Indentation ==========
+set tabstop=4                 " Number of spaces per TAB
+set shiftwidth=4              " Number of spaces to use for autoindent
+set expandtab                 " Convert tabs to spaces
+set autoindent                " Copy indent from current line
+set smartindent               " Smart auto indenting on new lines
+
+" ========== Appearance ==========
+set termguicolors
+set signcolumn="on"
+set noerrorbells
+set novisualbell
+set t_vb=
+set lazyredraw
+set rtp+=~/Workspace/nightfall.nvim/extras/vim/
+syntax enable                    " Enable syntax highlighting
+set background=dark              " Use a dark background
+colorscheme nightfall            " Set a built-in color scheme
+
+" ========== Status Line ==========
+set laststatus=2              " Always show status line
+set ruler                     " Show the cursor position
+
+" ========== File Navigation ==========
+set path+=**                  " Search into subfolders with :find
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" ========== Backup, Swap, and Undo (All Disabled) ==========
+set nobackup                  " Do not keep a backup file after overwriting a file
+set nowritebackup             " Do not make a backup before overwriting a file
+set noswapfile                " Do not use swap files
+set noundofile                " Do not save undo history to a file
+
+" ========== Key Mappings ==========
+let mapleader=" "
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>h :nohlsearch<CR>
+nnoremap <Leader>s :w <bar> :source %<CR>
+
+" Split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" ========== ESC Responsiveness ==========
+set timeoutlen=300   " Time in ms to wait for a mapped sequence to complete
+set ttimeout         " Enable key code timeouts
+set ttimeoutlen=10   " Time in ms to wait for key code sequences (ESC)
