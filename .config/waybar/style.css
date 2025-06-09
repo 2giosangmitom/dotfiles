@@ -1,3 +1,30 @@
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
 * {
   font-family: "JetBrainsMono Nerd Font";
   border-radius: 0;
@@ -11,7 +38,7 @@
 
 window#waybar {
   background: transparent;
-  color: #edf7f6;
+  color: @text;
 }
 
 window#waybar.empty #window {
@@ -19,25 +46,25 @@ window#waybar.empty #window {
 }
 
 tooltip {
-  background: #141523;
+  background: @base;
   border-radius: 5px;
   padding: 0 10px;
 }
 
 tooltip label {
-  color: #edf7f6;
+  color: @text;
 }
 
 .module {
   margin: 5px 5px;
-  background: #141523;
+  background: @base;
   border-radius: 5px;
   padding: 5px 8px;
 }
 
 #workspaces button {
   padding: 0 5px;
-  color: #edf7f6;
+  color: @text;
 }
 
 #workspaces button:hover {
@@ -48,17 +75,17 @@ tooltip label {
 }
 
 #workspaces button.visible {
-  color: #edf7f6;
+  color: @text;
 }
 
 #workspaces button.active {
-  color: #8be9fd;
+  color: @sky;
 }
 
 #workspaces button.urgent {
-  color: #ff5555;
+  color: @red;
 }
 
 #workspaces button.persistent {
-  color: #dd9ac2;
+  color: @blue;
 }
