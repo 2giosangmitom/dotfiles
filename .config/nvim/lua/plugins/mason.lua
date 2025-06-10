@@ -15,11 +15,12 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     cmd = { "LspInstall", "LspUninstall" },
     opts = {
       ensure_installed = {
         "lua_ls",
+        "clangd",
       },
     },
     dependencies = {

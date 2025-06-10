@@ -5,6 +5,7 @@ return {
   version = "1.*",
   opts = {
     keymap = { preset = "super-tab" },
+    cmdline = { enabled = false },
     appearance = {
       nerd_font_variant = "mono",
     },
