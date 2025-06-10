@@ -25,5 +25,5 @@ alias ll="ls -l"
 alias lla="ls -la"
 alias dev="nix develop"
 
-# Environment variables
+# Use nvim as manpager
 export MANPAGER="nvim +Man!"

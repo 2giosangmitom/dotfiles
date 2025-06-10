@@ -57,7 +57,7 @@ PKGS=(
   alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git
 
   # Editors
-  neovim vim
+  neovim
 
   # Window Manager & Desktop
   hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland
