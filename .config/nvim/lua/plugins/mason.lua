@@ -1,6 +1,9 @@
 return {
   {
     "mason-org/mason.nvim",
+    keys = {
+      { "<leader>pm", "<cmd>Mason<cr>", desc = "Mason" },
+    },
     cmd = { "Mason", "MasonInstall", "MasonUpdate" },
     opts = {
       ui = {

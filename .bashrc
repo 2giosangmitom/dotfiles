@@ -22,6 +22,7 @@ shopt -s checkwinsize
 alias ls="eza"
 alias la="ls -a"
 alias ll="ls -l"
+alias lt="ls -T"
 alias lla="ls -la"
 alias dev="nix develop"
 
