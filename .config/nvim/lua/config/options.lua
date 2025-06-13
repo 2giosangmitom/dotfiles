@@ -18,6 +18,8 @@ vim.opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+vim.opt.showmode = false
+vim.opt.laststatus = 3
 
 -- disable some default providers
 vim.g.loaded_node_provider = 0

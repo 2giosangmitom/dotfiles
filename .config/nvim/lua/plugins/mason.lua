@@ -24,6 +24,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "clangd",
+        "ts_ls",
       },
     },
     dependencies = {
