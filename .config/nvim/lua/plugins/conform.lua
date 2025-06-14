@@ -19,6 +19,7 @@ return {
       css = { "prettierd" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
+      sql = { "sqruff" },
     },
   },
 }
