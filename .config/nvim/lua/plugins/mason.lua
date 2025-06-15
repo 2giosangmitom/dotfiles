@@ -19,17 +19,19 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
     cmd = { "LspInstall", "LspUninstall" },
     opts = {
       ensure_installed = {
         "lua_ls",
         "clangd",
         "ts_ls",
+        "vue_ls",
+        "cssls",
       },
-    },
-    dependencies = {
-      "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
     },
   },
 }

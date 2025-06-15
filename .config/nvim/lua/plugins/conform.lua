@@ -20,6 +20,7 @@ return {
       javascript = { "prettierd" },
       typescript = { "prettierd" },
       sql = { "sqruff" },
+      vue = { "prettierd" },
     },
   },
 }
