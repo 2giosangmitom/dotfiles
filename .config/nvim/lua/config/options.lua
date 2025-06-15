@@ -10,6 +10,9 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.conceallevel = 2
 vim.opt.confirm = true
 vim.opt.expandtab = true
+vim.opt.linebreak = true
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -20,6 +23,12 @@ vim.opt.fillchars = {
 }
 vim.opt.showmode = false
 vim.opt.laststatus = 3
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitkeep = "screen"
+vim.opt.smartindent = true
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
 
 -- disable some default providers
 vim.g.loaded_node_provider = 0

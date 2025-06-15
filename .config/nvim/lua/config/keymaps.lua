@@ -8,7 +8,7 @@ local map = vim.keymap.set
 map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save current buffer", silent = true, remap = true })
 
 -- Lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true, remap = true })
+map("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true, remap = true })
 
 -- Clear search highlights
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlights", silent = true, remap = true })
@@ -24,3 +24,6 @@ map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 -- Better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+-- Quick fix
+map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quick fix" })

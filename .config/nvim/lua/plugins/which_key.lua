@@ -13,8 +13,9 @@ return {
       { "<leader>u", group = "ui" },
       { "<leader>f", group = "find/file" },
       { "<leader>g", group = "git" },
-      { "<leader>p", group = "packages" },
-      { "<leader>o", group = "overseer" },
+      { "<leader>p", group = "packages", icon = { icon = "", color = "orange" } },
+      { "<leader>o", group = "overseer", icon = { icon = "", color = "blue" } },
+      { "<leader>x", group = "quickfix/diagnostic" },
     },
   },
   keys = {
