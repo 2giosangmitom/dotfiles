@@ -2,11 +2,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
     build = ":TSUpdate",
-    opts = {},
-    config = function(_, opts)
-      require("nvim-treesitter").setup(opts)
+    config = function()
       require("nvim-treesitter").install({
         "lua",
         "javascript",
@@ -16,6 +14,7 @@ return {
         "c",
         "cpp",
         "markdown",
+        "markdown_inline",
         "vim",
         "vimdoc",
         "yaml",
