@@ -37,5 +37,4 @@ alias dev="nix develop"
 export MANPAGER="nvim +Man!"
 
 # History settings
-export HISTCONTROL=erasedups
 export HISTSIZE=10000
