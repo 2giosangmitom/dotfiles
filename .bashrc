@@ -28,3 +28,6 @@ alias dev="nix develop"
 
 # Use nvim as manpager
 export MANPAGER="nvim +Man!"
+
+# Override PATH
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
