@@ -2,32 +2,40 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
+# Exit if not running interactively
 [[ $- != *i* ]] && return
 
+# Path helper functions
+pathprepend() { [[ ":$PATH:" != *":$1:"* ]] && PATH="$1:$PATH"; }
+pathappend() { [[ ":$PATH:" != *":$1:"* ]] && PATH="$PATH:$1"; }
+
+# Add Neovim managed by bob to PATH
+pathprepend "$HOME/.local/share/bob/nvim-bin"
+
 # Integrations
-eval "$(starship init bash)"
-eval "$(fzf --bash)"
-eval "$(zoxide init bash)"
+command -v starship &>/dev/null && eval "$(starship init bash)"
+command -v fzf &>/dev/null && eval "$(fzf --bash)"
+command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
 
 # Enable bash-completion
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-  source /usr/share/bash-completion/bash_completion
-fi
+[[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 
-# Auto update the window size after each command
+# Shell behavior
 shopt -s checkwinsize
+shopt -s histappend
+shopt -s cdspell
 
 # Aliases
-alias ls="eza"
+alias ls="eza --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
-alias lt="ls -T"
 alias lla="ls -la"
+alias lt="ls --tree"
 alias dev="nix develop"
 
 # Use nvim as manpager
 export MANPAGER="nvim +Man!"
 
-# Override PATH
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+# History settings
+export HISTCONTROL=erasedups
+export HISTSIZE=10000

@@ -21,6 +21,7 @@ return {
       typescript = { "prettierd" },
       sql = { "sqruff" },
       vue = { "prettierd" },
+      sh = { "shfmt" },
     },
   },
 }

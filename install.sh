@@ -56,9 +56,6 @@ PKGS=(
   # Terminal & Shell
   alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git
 
-  # Editors
-  neovim
-
   # Window Manager & Desktop
   hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland
 
@@ -69,7 +66,7 @@ PKGS=(
   obs-studio pavucontrol
 
   # Misc
-  nix
+  nix bob
 )
 
 DRY_RUN=0
