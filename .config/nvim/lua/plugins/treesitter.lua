@@ -21,6 +21,11 @@ return {
         "json",
         "rust",
         "bash",
+        "python",
+        "css",
+        "scss",
+        "html",
+        "cmake",
       })
     end,
   },

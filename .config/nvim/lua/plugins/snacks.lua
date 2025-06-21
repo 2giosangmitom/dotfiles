@@ -5,6 +5,7 @@ return {
   dependencies = {
     "echasnovski/mini.icons",
   },
+  ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
@@ -20,11 +21,6 @@ return {
     scope = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = {
-        wo = { wrap = true },
-      },
-    },
   },
   keys = {
     -- Top Pickers & Explorer
