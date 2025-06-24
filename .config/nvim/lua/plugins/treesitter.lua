@@ -26,6 +26,7 @@ return {
         "scss",
         "html",
         "cmake",
+        "sql",
       })
     end,
   },
