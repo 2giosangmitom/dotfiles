@@ -31,6 +31,8 @@ return {
         "ts_ls",
         "vue_ls",
         "cssls",
+        "ruff",
+        "pyright",
       },
     },
   },
