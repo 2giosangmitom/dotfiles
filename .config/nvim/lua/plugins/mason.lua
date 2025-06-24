@@ -33,6 +33,7 @@ return {
         "cssls",
         "ruff",
         "pyright",
+        "bashls",
       },
     },
   },
