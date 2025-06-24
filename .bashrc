@@ -17,6 +17,16 @@ command -v starship &>/dev/null && eval "$(starship init bash)"
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
 command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
 
+# Yazi
+function y() {
+  local tmp cwd
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd" || return
+  rm -f -- "$tmp"
+}
+
 # Enable bash-completion
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 
