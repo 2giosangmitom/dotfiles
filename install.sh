@@ -6,7 +6,6 @@ set -euo pipefail
 BOLD='\033[1m'
 UNDERLINE='\033[4m'
 RESET='\033[0m'
-BLACK='\033[1;90m'
 RED='\033[1;91m'
 GREEN='\033[1;92m'
 YELLOW='\033[1;93m'
@@ -14,10 +13,6 @@ BLUE='\033[1;94m'
 MAGENTA='\033[1;95m'
 CYAN='\033[1;96m'
 WHITE='\033[1;97m'
-BG_BLUE='\033[44m'
-BG_GREEN='\033[42m'
-BG_YELLOW='\033[43m'
-BG_RED='\033[41m'
 
 log_task() {
   # Blue bold underline for tasks
@@ -31,17 +26,17 @@ log_info() {
 
 log_success() {
   # Green bold with background for success
-  echo -e "${BOLD}${BG_GREEN}${BLACK}✔ $1${RESET}"
+  echo -e "${BOLD}${GREEN}✔ $1${RESET}"
 }
 
 log_warn() {
   # Yellow bold with background for warnings
-  echo -e "${BOLD}${BG_YELLOW}${BLACK}⚠ $1${RESET}"
+  echo -e "${BOLD}${YELLOW}⚠ $1${RESET}"
 }
 
 log_error() {
   # Red bold with background for errors
-  echo -e "${BOLD}${BG_RED}${WHITE}✖ $1${RESET}"
+  echo -e "${BOLD}${RED}✖ $1${RESET}"
 }
 
 usage() {
@@ -57,7 +52,7 @@ PKGS=(
   alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git
 
   # Window Manager & Desktop
-  hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland
+  hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland hyprsunset
 
   # Fonts
   ttf-roboto ttf-jetbrains-mono-nerd noto-fonts-emoji
@@ -123,7 +118,7 @@ main() {
   fi
 
   if [[ $ASSUME_YES -eq 0 ]]; then
-    read -rp "$(echo -e "${YELLOW}""${BOLD}"Proceed with installation? [y/N] "${RESET}")" confirm
+    read -rp "$(echo -e "${WHITE}""${BOLD}"Proceed with installation? [y/N] "${RESET}")" confirm
     [[ $confirm =~ ^[Yy]$ ]] || {
       log_warn "Aborted by user"
       exit 1
@@ -131,8 +126,11 @@ main() {
   fi
 
   log_task "Installing packages"
-  sudo pacman -S "${install_list[@]}" --needed --noconfirm &&
+  if sudo pacman -S "${install_list[@]}" --needed --noconfirm; then
     log_success "All done!"
+  else
+    log_error "An error occurred while installing packages"
+  fi
 }
 
 main "$@"
