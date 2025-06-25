@@ -27,6 +27,9 @@ return {
         "html",
         "cmake",
         "sql",
+        "toml",
+        "jsdoc",
+        "jsonc",
       })
     end,
   },

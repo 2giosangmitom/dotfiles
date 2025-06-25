@@ -16,7 +16,7 @@
   "nvim-dap": { "branch": "master", "commit": "2edd6375692d9ac1053d50acfe415c1eb2ba92d0" },
   "nvim-dbee": { "branch": "master", "commit": "044e016127e63428b8d54116943cad29457db665" },
   "nvim-lint": { "branch": "master", "commit": "2b0039b8be9583704591a13129c600891ac2c596" },
-  "nvim-lspconfig": { "branch": "master", "commit": "6ed0fc9f86c93d5a816419e7d99be85a3c6fed10" },
+  "nvim-lspconfig": { "branch": "master", "commit": "2d0ca00368742c0c7af802b9b2a920c4cd02303a" },
   "nvim-surround": { "branch": "main", "commit": "8dd9150ca7eae5683660ea20cec86edcd5ca4046" },
   "nvim-treesitter": { "branch": "main", "commit": "98459ffcf7dfbeea83081166a2d732a8083a91c2" },
   "overseer.nvim": { "branch": "master", "commit": "72c68aab0358c92f451168b704c411c4a3e3410e" },

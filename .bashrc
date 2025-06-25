@@ -17,13 +17,13 @@ command -v starship &>/dev/null && eval "$(starship init bash)"
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
 command -v zoxide &>/dev/null && eval "$(zoxide init bash)"
 
-# Yazi
+# Auto change directory when using yazi
 function y() {
   local tmp cwd
   tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   IFS= read -r -d '' cwd <"$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd" || return
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || return 0
   rm -f -- "$tmp"
 }
 
