@@ -11,6 +11,7 @@ pathappend() { [[ ":$PATH:" != *":$1:"* ]] && PATH="$PATH:$1"; }
 
 # Add Neovim managed by bob to PATH
 pathprepend "$HOME/.local/share/bob/nvim-bin"
+pathappend "$HOME/.local/bin"
 
 # Integrations
 command -v starship &>/dev/null && eval "$(starship init bash)"

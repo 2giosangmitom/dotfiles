@@ -30,6 +30,7 @@ return {
         "toml",
         "jsdoc",
         "jsonc",
+        "nix",
       })
     end,
   },

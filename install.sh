@@ -49,10 +49,10 @@ usage() {
 
 PKGS=(
   # Terminal & Shell
-  alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git
+  alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git lazygit
 
   # Window Manager & Desktop
-  hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland hyprsunset
+  hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland hyprsunset rofi-wayland
 
   # Fonts
   ttf-roboto ttf-jetbrains-mono-nerd noto-fonts-emoji
@@ -61,7 +61,10 @@ PKGS=(
   obs-studio pavucontrol
 
   # Misc
-  nix bob
+  nix bob gnu-netcat
+
+  # Development
+  docker docker-compose rust rust-analyzer nodejs-lts-jod npm
 )
 
 DRY_RUN=0

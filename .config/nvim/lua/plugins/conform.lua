@@ -1,6 +1,7 @@
 return {
   "stevearc/conform.nvim",
   cmd = "ConformInfo",
+  dir = "~/Workspace/conform.nvim/",
   keys = {
     {
       "<leader>cf",
