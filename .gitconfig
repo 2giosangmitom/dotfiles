@@ -1,6 +1,7 @@
 [user]
 	name = Vo Quang Chien
 	email = voquangchien.dev@proton.me
+	signingkey = 61D2F8CF2F09492F
 [core]
 	pager = delta
 [interactive]
@@ -9,3 +10,7 @@
 	navigate = true
 [merge]
 	conflictStyle = zdiff3
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

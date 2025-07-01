@@ -1,7 +1,6 @@
 return {
   {
     "2giosangmitom/nightfall.nvim",
-    dir = "~/Workspace/nightfall.nvim/",
     lazy = false,
     priority = 1000,
     opts = {
