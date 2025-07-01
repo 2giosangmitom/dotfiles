@@ -61,10 +61,10 @@ PKGS=(
   obs-studio pavucontrol
 
   # Misc
-  nix bob gnu-netcat
+  nix bob gnu-netcat curl
 
   # Development
-  docker docker-compose rust rust-analyzer nodejs-lts-jod npm
+  docker docker-compose rust rust-analyzer nodejs-lts-jod npm xh
 )
 
 DRY_RUN=0

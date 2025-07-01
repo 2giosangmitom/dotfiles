@@ -37,7 +37,7 @@ shopt -s histappend
 shopt -s cdspell
 
 # Aliases
-alias ls="eza --color=auto"
+alias ls="eza --color=auto --group-directories-first"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"

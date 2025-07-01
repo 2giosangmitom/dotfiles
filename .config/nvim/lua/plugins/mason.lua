@@ -34,6 +34,8 @@ return {
         "ruff",
         "pyright",
         "bashls",
+        "taplo",
+        "eslint",
       },
     },
   },
