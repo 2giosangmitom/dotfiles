@@ -49,8 +49,8 @@ usage() {
 
 PKGS=(
   # Tools
-  alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git lazygit eza github-cli nix bob gnu-netcat curl stow unzip unrar 7zip
-  brightnessctl
+  alacritty starship fastfetch zoxide fzf yazi bottom ripgrep fd git-delta git lazygit eza github-cli
+  nix bob gnu-netcat curl stow unzip unrar 7zip brightnessctl
 
   # Window Manager & Desktop
   hyprland hypridle swww waybar nwg-look xdg-desktop-portal xdg-desktop-portal-hyprland hyprsunset rofi-wayland
@@ -62,7 +62,7 @@ PKGS=(
   obs-studio pavucontrol
 
   # Development
-  docker docker-compose rust rust-analyzer nodejs-lts-jod npm xh
+  docker docker-compose rust rust-analyzer nodejs-lts-jod npm xh clang
 )
 
 DRY_RUN=0
