@@ -47,5 +47,8 @@ alias dev="nix develop"
 # Use nvim as manpager
 export MANPAGER="nvim +Man!"
 
+# Use nvim as default editor
+export EDITOR="nvim"
+
 # History settings
 export HISTSIZE=10000
