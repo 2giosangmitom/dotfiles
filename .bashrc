@@ -52,3 +52,7 @@ export EDITOR="nvim"
 
 # History settings
 export HISTSIZE=10000
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+pathappend "$BUN_INSTALL/bin:$PATH"

@@ -1,3 +1,6 @@
+[terminal.shell]
+program = "fish"
+
 [window]
 dynamic_padding = true
 opacity = 0.8
