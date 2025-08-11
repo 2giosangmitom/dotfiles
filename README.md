@@ -1,7 +1,11 @@
-# 2giosangmitom's Arch Linux dotfiles
+# 2giosangmitom's Arch Linux Dotfiles
 
-Hello, welcome to my dotfiles repository 🤓.
+Welcome to my personal dotfiles repository! 🤓
+
+> [!WARNING]
+> **Do not** run the `install.sh` script directly. It's tailored specifically for my personal setup.  
+> Feel free to copy and adapt any configuration you like instead.
 
 ## Preview
 
-![preview](./assets/preview.png)
+![Preview](./assets/preview.png)

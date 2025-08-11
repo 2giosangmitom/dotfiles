@@ -11,6 +11,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-lualine/lualine.nvim",
 })
 
 vim.cmd("colorscheme nightfall")
@@ -30,3 +31,8 @@ require("mason").setup()
 
 -- neo-tree.nvim
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle explorer" })
+
+-- lualine.nvim
+require("lualine").setup({
+	extensions = { "neo-tree" },
+})

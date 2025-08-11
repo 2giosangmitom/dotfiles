@@ -11,3 +11,14 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.fillchars = {
 	eob = " ",
 }
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wrap = true
+vim.opt.scrolloff = 4
+vim.opt.ruler = false
+vim.opt.linebreak = true
+vim.opt.termguicolors = true
+vim.opt.smartindent = true
+vim.opt.shiftround = true
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.showmode = false
