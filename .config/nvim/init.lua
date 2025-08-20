@@ -1,5 +1,6 @@
 require("config.options")
 require("config.keymaps")
+require("config.autocmds")
 
 vim.pack.add({
 	"https://github.com/2giosangmitom/nightfall.nvim",
@@ -12,6 +13,7 @@ vim.pack.add({
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/ibhagwan/fzf-lua",
 })
 
 vim.cmd("colorscheme nightfall")
@@ -20,6 +22,7 @@ vim.cmd("colorscheme nightfall")
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
+		markdown = { "prettierd" },
 	},
 })
 vim.keymap.set("n", "<leader>cf", function()
@@ -31,8 +34,22 @@ require("mason").setup()
 
 -- neo-tree.nvim
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle explorer" })
+require("neo-tree").setup({
+	filesystem = {
+		window = {
+			mappings = {
+				["<F5>"] = "refresh",
+				["l"] = "open",
+			},
+		},
+	},
+})
 
 -- lualine.nvim
 require("lualine").setup({
 	extensions = { "neo-tree" },
 })
+
+-- fzf-lua
+require("fzf-lua").setup({})
+vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find files" })
