@@ -7,7 +7,7 @@ vim.opt.tabstop = 2
 vim.opt.signcolumn = "yes"
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.opt.fillchars = {
 	eob = " ",
 }

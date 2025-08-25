@@ -14,6 +14,8 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/echasnovski/mini.pairs",
+  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('1.x') }
 })
 
 vim.cmd("colorscheme nightfall")
@@ -53,3 +55,22 @@ require("lualine").setup({
 -- fzf-lua
 require("fzf-lua").setup({})
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find files" })
+
+-- mini.pairs
+require("mini.pairs").setup()
+
+-- lsp servers
+local files = vim.fn.readdir("lsp")
+for _, file in ipairs(files) do
+	local server_name = file:gsub("%.lua$", "")
+	local ok, opts = pcall(require, "lsp." .. server_name)
+	if ok then
+		vim.lsp.enable(server_name, opts)
+	else
+		vim.notify("Failed to load LSP config: " .. file, vim.log.levels.ERROR)
+	end
+end
+
+-- blink.cmp
+require("blink.cmp").setup({
+})
