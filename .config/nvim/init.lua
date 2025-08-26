@@ -15,7 +15,8 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/echasnovski/mini.pairs",
-  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('1.x') }
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
 
 vim.cmd("colorscheme nightfall")
@@ -28,11 +29,15 @@ require("conform").setup({
 	},
 })
 vim.keymap.set("n", "<leader>cf", function()
-	require("conform").format()
+	require("conform").format({ lsp_format = "fallback" })
 end, { desc = "Format code" })
 
 -- mason.nvim
 require("mason").setup()
+
+require("mason-lspconfig").setup({
+	ensure_installed = { "clangd", "lua_ls" },
+})
 
 -- neo-tree.nvim
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle explorer" })
@@ -65,12 +70,22 @@ for _, file in ipairs(files) do
 	local server_name = file:gsub("%.lua$", "")
 	local ok, opts = pcall(require, "lsp." .. server_name)
 	if ok then
-		vim.lsp.enable(server_name, opts)
+		vim.lsp.config(server_name, opts)
 	else
 		vim.notify("Failed to load LSP config: " .. file, vim.log.levels.ERROR)
 	end
 end
 
 -- blink.cmp
-require("blink.cmp").setup({
+require("blink.cmp").setup({})
+
+-- nvim-treesitter
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "<filetype>" },
+	callback = function()
+		vim.treesitter.start()
+	end,
 })
+
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
