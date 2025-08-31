@@ -16,6 +16,8 @@ vim.pack.add({
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/echasnovski/mini.pairs",
 	"https://github.com/folke/which-key.nvim",
+  "https://github.com/nvim-mini/mini.indentscope",
+  "https://github.com/j-hui/fidget.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
@@ -27,6 +29,10 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		markdown = { "prettierd" },
+		javascript = { "prettierd" },
+		typescript = { "prettierd" },
+		vue = { "prettierd" },
+		sql = { "sqruff" },
 	},
 })
 vim.keymap.set("n", "<leader>cf", function()
@@ -80,6 +86,10 @@ end
 -- blink.cmp
 require("blink.cmp").setup({
 	keymap = { preset = "super-tab" },
+	sources = {
+		default = { "lsp", "buffer", "snippets", "path" },
+	},
+	signature = { enabled = true },
 })
 
 -- nvim-treesitter
@@ -97,3 +107,9 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 require("which-key").setup({
 	preset = "helix",
 })
+
+-- mini.indentscope
+require("mini.indentscope").setup()
+
+-- fidget.nvim
+require("fidget").setup()
