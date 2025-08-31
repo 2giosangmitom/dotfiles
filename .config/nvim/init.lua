@@ -15,6 +15,7 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/echasnovski/mini.pairs",
+	"https://github.com/folke/which-key.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
@@ -77,15 +78,22 @@ for _, file in ipairs(files) do
 end
 
 -- blink.cmp
-require("blink.cmp").setup({})
+require("blink.cmp").setup({
+	keymap = { preset = "super-tab" },
+})
 
 -- nvim-treesitter
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
+	pattern = "*",
 	callback = function()
-		vim.treesitter.start()
+		pcall(vim.treesitter.start)
 	end,
 })
 
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+-- which-key.nvim
+require("which-key").setup({
+	preset = "helix",
+})
