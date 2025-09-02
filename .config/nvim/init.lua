@@ -4,7 +4,7 @@ require("config.autocmds")
 
 vim.pack.add({
 	"https://github.com/2giosangmitom/nightfall.nvim",
-  "https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/romgrk/barbar.nvim",
 	"https://github.com/kylechui/nvim-surround",
 	"https://github.com/neovim/nvim-lspconfig",
@@ -76,16 +76,21 @@ vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find files"
 require("mini.pairs").setup()
 
 -- lsp servers
-local files = vim.fn.readdir("lsp")
-for _, file in ipairs(files) do
-	local server_name = file:gsub("%.lua$", "")
-	local ok, opts = pcall(require, "lsp." .. server_name)
-	if ok then
-		vim.lsp.config(server_name, opts)
-	else
-		vim.notify("Failed to load LSP config: " .. file, vim.log.levels.ERROR)
-	end
-end
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+				},
+			},
+		},
+	},
+})
 
 -- blink.cmp
 require("blink.cmp").setup({
