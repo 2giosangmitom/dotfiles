@@ -4,6 +4,9 @@ require("config.autocmds")
 
 vim.pack.add({
 	"https://github.com/2giosangmitom/nightfall.nvim",
+  "https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/romgrk/barbar.nvim",
+	"https://github.com/kylechui/nvim-surround",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
@@ -16,8 +19,9 @@ vim.pack.add({
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/echasnovski/mini.pairs",
 	"https://github.com/folke/which-key.nvim",
-  "https://github.com/nvim-mini/mini.indentscope",
-  "https://github.com/j-hui/fidget.nvim",
+	"https://github.com/nvim-mini/mini.indentscope",
+	"https://github.com/j-hui/fidget.nvim",
+	"https://github.com/jellydn/hurl.nvim",
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 })
@@ -43,7 +47,7 @@ end, { desc = "Format code" })
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-	ensure_installed = { "clangd", "lua_ls" },
+	ensure_installed = { "clangd", "lua_ls", "vue_ls", "prismals", "vtsls" },
 })
 
 -- neo-tree.nvim
@@ -109,7 +113,20 @@ require("which-key").setup({
 })
 
 -- mini.indentscope
-require("mini.indentscope").setup()
+require("mini.indentscope").setup({
+	symbol = "│",
+})
 
 -- fidget.nvim
 require("fidget").setup()
+
+-- hurl.nvim
+require("hurl").setup()
+vim.keymap.set({ "v", "n" }, "<leader>hr", ":HurlRunner<cr>", { desc = "Hurl Runner" })
+
+-- nvim-surround
+require("nvim-surround").setup()
+
+-- barbar.nvim
+vim.keymap.set("n", "H", "<cmd>BufferPrevious<cr>", { desc = "Move to previous buffer" })
+vim.keymap.set("n", "L", "<cmd>BufferNext<cr>", { desc = "Move to next buffer" })
