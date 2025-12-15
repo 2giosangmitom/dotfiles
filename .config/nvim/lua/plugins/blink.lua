@@ -1,6 +1,8 @@
 return {
-  {
-    "nvim-mini/mini.test",
-    opts = {},
+  "saghen/blink.cmp",
+  opts = {
+    keymap = {
+      preset = "super-tab",
+    },
   },
 }
