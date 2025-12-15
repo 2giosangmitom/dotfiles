@@ -4,6 +4,7 @@ WALLPAPER_DIR="$HOME/Wallpapers"
 
 if ! pgrep -x "hyprpaper" >/dev/null; then
   hyprpaper &
+  sleep 1
 fi
 
 [[ -d "$WALLPAPER_DIR" ]] || exit 1
