@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WALLPAPER_DIR="$HOME/Wallpapers"
+WALLPAPER_DIR="$HOME/dotfiles/Wallpapers"
 
 if ! pgrep -x "hyprpaper" >/dev/null; then
   hyprpaper &
