@@ -5,4 +5,10 @@ return {
       transparent = false,
     },
   },
+  {
+    "catppuccin",
+    opts = {
+      term_colors = true,
+    },
+  },
 }

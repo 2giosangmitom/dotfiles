@@ -8,7 +8,7 @@ fi
 
 [[ -d "$WALLPAPER_DIR" ]] || exit 1
 
-current=$(hyprctl hyprpaper listloaded)
+current=$(cat /tmp/hyprpaper_current_wallpaper)
 
 next_wp=$(
   find "$WALLPAPER_DIR" -type f |
@@ -23,6 +23,6 @@ if [[ -z "$next_wp" ]]; then
   next_wp=$(find "$WALLPAPER_DIR" -type f | head -n 1)
 fi
 
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$next_wp"
+# Set wallpaper image
 hyprctl hyprpaper wallpaper ",$next_wp"
+echo "$next_wp" >/tmp/hyprpaper_current_wallpaper

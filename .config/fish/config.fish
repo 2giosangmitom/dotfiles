@@ -1,4 +1,5 @@
 set -U fish_greeting
+set -U fish_user_paths ~/.local/bin ~/.foundry/bin
 
 zoxide init fish | source
 starship init fish | source

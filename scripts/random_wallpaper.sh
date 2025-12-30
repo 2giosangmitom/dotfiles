@@ -11,6 +11,6 @@ fi
 
 random_wp=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
 
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$random_wp"
+# Set wallpaper image
 hyprctl hyprpaper wallpaper ",$random_wp"
+echo "$random_wp" >/tmp/hyprpaper_current_wallpaper
