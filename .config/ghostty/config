@@ -1,0 +1,6 @@
+command = /usr/bin/fish
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+theme = Catppuccin Mocha
+
+keybind = alt+s>r=reload_config
