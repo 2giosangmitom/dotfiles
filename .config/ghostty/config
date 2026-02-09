@@ -4,3 +4,5 @@ font-size = 13
 theme = Catppuccin Mocha
 
 keybind = alt+s>r=reload_config
+
+async-backend = epoll
