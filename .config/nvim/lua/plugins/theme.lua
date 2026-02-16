@@ -1,6 +1,7 @@
 return {
   {
     "2giosangmitom/nightfall.nvim",
+    dir = "~/Work/nightfall.nvim",
     opts = {
       transparent = false,
     },

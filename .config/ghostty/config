@@ -2,7 +2,8 @@ command = /usr/bin/fish
 font-family = JetBrainsMono Nerd Font
 font-size = 13
 theme = Catppuccin Mocha
-
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
 keybind = alt+s>r=reload_config
-
 async-backend = epoll
