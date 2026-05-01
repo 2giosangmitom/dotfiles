@@ -35,5 +35,14 @@
   "current_line_highlight": "all",
   "git": {
     "inline_blame": { "enabled": false }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        }
+      }
+    }
   }
 }
