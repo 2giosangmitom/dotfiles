@@ -1,0 +1,40 @@
+{
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gemini-3.1-pro-preview",
+      "enable_thinking": true,
+      "effort": "high"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    }
+  },
+  "theme": "Everforest Dark Hard (material)",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "autosave": "off",
+  "format_on_save": "off",
+  "buffer_font_size": 15,
+  "ui_font_family": ".SystemUIFont",
+  "icon_theme": "Catppuccin Mocha",
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "buffer_line_height": "comfortable",
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "project_panel": { "dock": "left", "entry_spacing": "comfortable" },
+  "tabs": { "file_icons": true },
+  "current_line_highlight": "all",
+  "git": {
+    "inline_blame": { "enabled": false }
+  }
+}
