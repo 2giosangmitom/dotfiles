@@ -17,7 +17,7 @@
       "program": "fish"
     }
   },
-  "theme": "Everforest Dark Hard (material)",
+  "theme": "Catppuccin Mocha",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "autosave": "off",
   "format_on_save": "off",
