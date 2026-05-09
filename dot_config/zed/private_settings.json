@@ -1,5 +1,9 @@
 {
+  "cli_default_open_behavior": "new_window",
   "edit_predictions": {
+    "copilot": {
+      "enable_next_edit_suggestions": true
+    },
     "provider": "copilot"
   },
   "agent": {
