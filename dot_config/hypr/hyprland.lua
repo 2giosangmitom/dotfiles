@@ -69,7 +69,7 @@ hl.config({
 local mod = "SUPER"
 local modS = "SUPER + SHIFT"
 
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd("ghostty"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 hl.bind(mod .. " + S", hl.dsp.layout("togglesplit"))
