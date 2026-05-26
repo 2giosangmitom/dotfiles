@@ -1,4 +1,21 @@
 {
+  "base_keymap": "VSCode",
+  "proxy": "",
+  "disable_ai": true,
+  "helix_mode": false,
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "cli_default_open_behavior": "new_window",
   "edit_predictions": {
     "copilot": {
@@ -7,6 +24,7 @@
     "provider": "copilot"
   },
   "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
       "model": "gemini-3.1-pro-preview",
@@ -25,10 +43,9 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "autosave": "off",
   "format_on_save": "off",
-  "buffer_font_size": 15,
+  "buffer_font_size": 16.0,
   "ui_font_family": ".SystemUIFont",
   "icon_theme": "Catppuccin Mocha",
-  "base_keymap": "VSCode",
   "buffer_line_height": "comfortable",
   "toolbar": {
     "breadcrumbs": false,

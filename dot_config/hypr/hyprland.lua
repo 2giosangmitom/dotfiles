@@ -32,8 +32,8 @@ hl.config({
 	},
 	decoration = {
 		blur = {
-			size = 3,
-			passes = 5,
+			size = 2,
+			passes = 4,
 			xray = true,
 			vibrancy = 0.1,
 			ignore_opacity = true,
@@ -73,9 +73,9 @@ hl.bind(mod .. " + Return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 hl.bind(mod .. " + S", hl.dsp.layout("togglesplit"))
-hl.bind("Print", hl.dsp.exec_cmd("grim - | wl-copy"))
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim -g $(slurp) - | wl-copy"))
-hl.bind(modS .. " + Print", hl.dsp.exec_cmd("grim -g $(slurp)"))
+hl.bind("Print", hl.dsp.exec_cmd([[grim - | wl-copy]]))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
+hl.bind(modS .. " + Print", hl.dsp.exec_cmd([[grim -g "$(slurp)"]]))
 hl.bind(mod .. " + Space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(modS .. " + B", hl.dsp.exec_cmd("~/scripts/wallpaper.sh next"))
 hl.bind(modS .. " + W", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
