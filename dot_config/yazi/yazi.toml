@@ -1,9 +1,0 @@
-[mgr]
-show_hidden = true
-
-[opener]
-edit = [{ run = "nvim $@", block = true, for = "unix" }]
-
-[preview]
-wrap = "yes"
-tab_size = 2

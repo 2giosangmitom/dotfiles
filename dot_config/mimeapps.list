@@ -1,3 +1,0 @@
-[Default Applications]
-x-scheme-handler/webcal=brave-browser.desktop
-application/pdf=org.gnome.Papers.desktop
