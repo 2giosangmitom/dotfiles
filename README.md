@@ -10,6 +10,7 @@ My Linux desktop configuration, managed with [chezmoi](https://www.chezmoi.io/).
 | Noctalia  | Shell appearance and behavior                          |
 | Alacritty | Terminal settings and four Nightfall color variants    |
 | Yazi      | File manager theme with matching Nightfall variants    |
+| Lazygit   | Git TUI theme with matching Nightfall variants         |
 | Neovim    | Editor settings and plugins                            |
 | Bash      | Starship, fzf, mise, zoxide, eza, and Yazi integration |
 | Starship  | Nerd Font Symbols preset                               |
@@ -38,7 +39,7 @@ chezmoi apply
 
 ## Theme switching
 
-Alacritty and Yazi use the four variants from [nightfall.nvim](https://github.com/2giosangmitom/nightfall.nvim):
+Alacritty, Yazi, and Lazygit use the four variants from [nightfall.nvim](https://github.com/2giosangmitom/nightfall.nvim):
 
 ```sh
 mitom-theme-switch nightfall

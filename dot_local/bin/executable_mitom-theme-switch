@@ -31,4 +31,4 @@ esac
 
 mkdir -p "$(dirname "$state_file")"
 printf '%s\n' "$1" > "$state_file"
-chezmoi apply "$HOME/.config/alacritty" "$HOME/.config/yazi"
+chezmoi apply "$HOME/.config/alacritty" "$HOME/.config/yazi" "$HOME/.config/lazygit"
