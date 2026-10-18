@@ -1,2 +1,3 @@
+# Keep repository documentation and setup helpers out of $HOME.
 README.md
 setup/
