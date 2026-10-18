@@ -1,0 +1,21 @@
+[osd.kinds]
+bluetooth = false
+caffeine = false
+dnd = false
+lock_keys = false
+power_profile = false
+wifi = false
+
+# Transparency + blur for Noctalia on niri (ext-background-effect).
+[bar.default]
+background_opacity = 0.75
+compositor_blur = true
+
+[shell.panel]
+transparency_mode = "glass"
+
+[shell]
+settings_window_translucent = true
+
+[backdrop]
+enabled = true

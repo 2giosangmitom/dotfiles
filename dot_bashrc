@@ -1,0 +1,33 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza --color=auto --group-directories-first --icons=auto"
+  alias ll="eza -lh --git --group-directories-first --icons=auto"
+  alias la="eza -lah --git --group-directories-first --icons=auto"
+  alias lt="eza --tree --level=2 --group-directories-first --icons=auto"
+else
+  alias ls="ls --color=auto --group-directories-first"
+fi
+alias compose="docker compose"
+
+# Shell integrations
+eval "$(starship init bash)"
+eval "$(fzf --bash)"
+eval "$(mise activate bash)"
+
+function y() {
+  local tmp cwd
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+  command rm -f -- "$tmp"
+}
+
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR=nvim
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi

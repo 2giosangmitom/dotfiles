@@ -1,0 +1,27 @@
+{{- $themeFile := joinPath .chezmoi.homeDir ".config/nightfall/theme" -}}
+{{- $flavor := "nightfall" -}}
+{{- if stat $themeFile -}}
+  {{- $flavor = trim (output "cat" $themeFile) -}}
+{{- end -}}
+{{- if not (has $flavor (list "nightfall" "deeper-night" "maron" "winter")) -}}
+  {{- fail (printf "Unknown Nightfall theme: %s" $flavor) -}}
+{{- end -}}
+[general]
+import = ["~/.config/alacritty/themes/{{ $flavor }}.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "None"
+opacity = 0.8
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+size = 14
+
+[terminal]
+shell = "bash"

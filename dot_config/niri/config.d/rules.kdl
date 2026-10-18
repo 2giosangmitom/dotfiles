@@ -1,0 +1,68 @@
+window-rule {
+  match title="Brave"
+  match title="Visual Studio Code"
+  match title="Alacritty"
+  open-maximized true
+}
+
+window-rule {
+  match app-id="wl-mirror"
+  open-on-output "HDMI-A-1"
+  open-fullscreen true
+}
+
+window-rule {
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+}
+
+// Global blur tuning (niri 26.04+). Values from Noctalia docs.
+blur {
+  passes 2
+  offset 3.0
+  noise 0.03
+  saturation 1.5
+}
+
+// Apps: realistic blur (non-xray). Visible where windows are semitransparent.
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+// Explicit blur for Alacritty (required for its transparency to show blur).
+window-rule {
+  match app-id="^Alacritty$"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+// Noctalia shell surfaces publish blur regions automatically;
+// use non-xray so blur samples content behind instead of wallpaper.
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+  }
+}
+
+layer-rule {
+  match namespace="noctalia-window-switcher"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}

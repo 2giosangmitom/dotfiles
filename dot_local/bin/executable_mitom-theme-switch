@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+state_file="$HOME/.config/nightfall/theme"
+
+if [ "$#" -eq 0 ]; then
+  if [ -f "$state_file" ]; then
+    cat "$state_file"
+  else
+    printf 'nightfall\n'
+  fi
+  exit 0
+fi
+
+if [ "$#" -ne 1 ]; then
+  printf 'Usage: mitom-theme-switch [nightfall|deeper-night|maron|winter|--list]\n' >&2
+  exit 2
+fi
+
+case "$1" in
+  --list)
+    printf '%s\n' nightfall deeper-night maron winter
+    exit 0
+    ;;
+  nightfall|deeper-night|maron|winter) ;;
+  *)
+    printf 'Unknown Nightfall theme: %s\n' "$1" >&2
+    exit 2
+    ;;
+esac
+
+mkdir -p "$(dirname "$state_file")"
+printf '%s\n' "$1" > "$state_file"
+chezmoi apply "$HOME/.config/alacritty"

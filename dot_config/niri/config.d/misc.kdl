@@ -1,0 +1,28 @@
+hotkey-overlay {
+  skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+spawn-at-startup "noctalia"
+
+debug {
+  honor-xdg-activation-with-invalid-serial
+}
+
+overview {
+  workspace-shadow {
+    off
+  }
+}

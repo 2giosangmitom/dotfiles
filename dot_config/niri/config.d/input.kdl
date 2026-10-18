@@ -1,0 +1,17 @@
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+    numlock
+  }
+
+  touchpad {
+    tap
+    natural-scroll
+  }
+
+  mouse {
+    scroll-method "no-scroll"
+  }
+}
