@@ -13,6 +13,7 @@ window-rule {
 
 window-rule {
   clip-to-geometry true
+  draw-border-with-background false
 }
 
 window-rule {
