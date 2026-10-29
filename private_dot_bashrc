@@ -1,7 +1,56 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if command -v eza >/dev/null 2>&1; then
+have() { command -v "$1" >/dev/null 2>&1; }
+
+# ---------------------------------------------------------------------------
+# Environment
+# ---------------------------------------------------------------------------
+export EDITOR=nvim
+export VISUAL=$EDITOR
+export PATH="$HOME/.local/bin:$PATH"
+
+# ---------------------------------------------------------------------------
+# Shell options
+# ---------------------------------------------------------------------------
+shopt -s autocd         # `dir` is shorthand for `cd dir`
+shopt -s cdspell        # fix minor typos in cd arguments
+shopt -s dirspell       # fix minor typos during directory completion
+shopt -s globstar       # ** matches recursively
+shopt -s nocaseglob     # case-insensitive globbing
+shopt -s checkwinsize   # update LINES/COLUMNS after each command
+shopt -s cmdhist        # keep multi-line commands as one history entry
+shopt -s histappend     # append to the history file instead of overwriting
+shopt -s histverify     # edit history expansions (!!) before running them
+
+# Don't let Ctrl-S freeze the terminal
+stty -ixon 2>/dev/null
+
+# ---------------------------------------------------------------------------
+# History
+# ---------------------------------------------------------------------------
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=100000
+HISTFILESIZE=200000
+HISTIGNORE="ls:ll:la:cd:pwd:exit:clear"
+HISTTIMEFORMAT="%F %T  "
+
+# ---------------------------------------------------------------------------
+# Completion
+# ---------------------------------------------------------------------------
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+bind "set colored-stats on"
+bind "set mark-symlinked-directories on"
+
+if ! shopt -oq posix && [[ -r /usr/share/bash-completion/bash_completion ]]; then
+  . /usr/share/bash-completion/bash_completion
+fi
+
+# ---------------------------------------------------------------------------
+# Aliases
+# ---------------------------------------------------------------------------
+if have eza; then
   alias ls="eza --color=auto --group-directories-first --icons=auto"
   alias ll="eza -lh --git --group-directories-first --icons=auto"
   alias la="eza -lah --git --group-directories-first --icons=auto"
@@ -9,25 +58,35 @@ if command -v eza >/dev/null 2>&1; then
 else
   alias ls="ls --color=auto --group-directories-first"
 fi
-alias compose="docker compose"
 
-# Shell integrations
-eval "$(starship init bash)"
-eval "$(fzf --bash)"
-eval "$(mise activate bash)"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ..="cd .."
+alias ...="cd ../.."
+alias mkdir="mkdir -pv"
 
-function y() {
+# ---------------------------------------------------------------------------
+# Functions
+# ---------------------------------------------------------------------------
+# Open yazi and cd into the directory it was left in.
+y() {
   local tmp cwd
   tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   command yazi "$@" --cwd-file="$tmp"
   IFS= read -r -d '' cwd <"$tmp"
-  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+  [[ -n $cwd && $cwd != "$PWD" && -d $cwd ]] && builtin cd -- "$cwd"
   command rm -f -- "$tmp"
 }
 
-export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=nvim
+# ---------------------------------------------------------------------------
+# Tool integrations
+# ---------------------------------------------------------------------------
+have starship && eval "$(starship init bash)"
+have fzf && eval "$(fzf --bash)"
+have mise && eval "$(mise activate bash)"
 
-if command -v zoxide >/dev/null 2>&1; then
+if have zoxide; then
+  # Keep $HOME (the default) and skip the chezmoi source tree.
+  export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.local/share/chezmoi:$HOME/.local/share/chezmoi/*"
   eval "$(zoxide init bash)"
 fi
