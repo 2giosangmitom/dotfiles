@@ -1,5 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
 })
 
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "Find files" })

@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 require("plugins.mini-icons")
 
 vim.pack.add({
-  { src = "https://github.com/nvim-tree/nvim-tree.lua" },
+	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 })
 
 require("nvim-tree").setup({})
