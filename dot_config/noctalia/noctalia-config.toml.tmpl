@@ -1,0 +1,57 @@
+{{- $themeFile := joinPath .chezmoi.homeDir ".config/nightfall/theme" -}}
+{{- $flavor := "nightfall" -}}
+{{- if stat $themeFile -}}
+  {{- $flavor = trim (output "cat" $themeFile) -}}
+{{- end -}}
+{{- if not (has $flavor (list "nightfall" "deeper-night" "maron" "winter")) -}}
+  {{- fail (printf "Unknown Nightfall theme: %s" $flavor) -}}
+{{- end -}}
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "{{ if eq $flavor "nightfall" }}nightfall{{ else }}nightfall-{{ $flavor }}{{ end }}"
+
+[shell.screenshot]
+save_to_file = true
+directory = "~/Pictures/Screenshots"
+filename_pattern = "Screenshot from %Y-%m-%d %H-%M-%S"
+copy_to_clipboard = true
+
+[osd.kinds]
+bluetooth = false
+caffeine = false
+dnd = false
+lock_keys = false
+power_profile = false
+wifi = false
+
+# Transparency + blur for Noctalia on niri (ext-background-effect).
+[bar.default]
+background_opacity = 0.7
+compositor_blur = true
+border = "outline_variant"
+border_width = 1.0
+color = "on_surface"
+capsule = true
+capsule_fill = "surface_container"
+capsule_opacity = 0.55
+capsule_foreground = "on_surface"
+capsule_padding = 8
+widget_spacing = 6
+
+# One accent (primary) instead of the primary/secondary/tertiary rainbow.
+[widget.workspaces]
+style = "focus_hint"
+focused_color = "primary"
+occupied_color = "outline_variant"
+empty_color = "surface_container"
+urgent_color = "error"
+
+[shell.panel]
+transparency_mode = "glass"
+
+[shell]
+settings_window_translucent = true
+
+[backdrop]
+enabled = true

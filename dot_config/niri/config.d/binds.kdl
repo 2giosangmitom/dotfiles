@@ -101,9 +101,9 @@ binds {
 
   Mod+W { toggle-column-tabbed-display; }
 
-  Print { screenshot; }
-  Ctrl+Print { screenshot-screen; }
-  Alt+Print { screenshot-window; }
+  Mod+S { spawn-sh "noctalia msg screenshot-region"; }
+  Mod+Ctrl+S { spawn-sh "noctalia msg screenshot-fullscreen"; }
+  Mod+Alt+S { spawn-sh "noctalia msg screenshot-window"; }
 
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
   Mod+Shift+E { quit; }
