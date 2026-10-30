@@ -1,26 +1,10 @@
 # Dotfiles
 
-My Linux desktop configuration, managed with [chezmoi](https://www.chezmoi.io/).
-
-## What's included
-
-| Tool      | Configuration                                          |
-| --------- | ------------------------------------------------------ |
-| Niri      | Wayland compositor, bindings, layouts, and rules       |
-| Noctalia  | Shell appearance and behavior                          |
-| Alacritty | Terminal settings and four Nightfall color variants    |
-| Yazi      | File manager theme with matching Nightfall variants    |
-| Lazygit   | Git TUI theme with matching Nightfall variants         |
-| Neovim    | Editor settings and plugins                            |
-| Bash      | Starship, fzf, mise, zoxide, eza, and Yazi integration |
-| Starship  | Nerd Font Symbols preset                               |
-| Git       | Git defaults and delta integration                     |
-
-The repository also includes a wallpaper and the `mitom-theme-switch` script.
+These are the configs I use on my Arch Linux desktop, managed with [chezmoi](https://www.chezmoi.io/). There's also a wallpaper and a small theme switcher script in here.
 
 ## Setup
 
-Install [chezmoi](https://www.chezmoi.io/install/) and the applications you use, then initialize these dotfiles:
+Install [chezmoi](https://www.chezmoi.io/install/), then pull the repo and look at what it would change before applying anything:
 
 ```sh
 chezmoi init git@github.com:2giosangmitom/dotfiles.git
@@ -28,18 +12,18 @@ chezmoi diff
 chezmoi apply
 ```
 
-Review `chezmoi diff` before applying: the configuration may include machine-specific settings, particularly for Niri and installed fonts. Alacritty uses **JetBrainsMono Nerd Font**.
+Some of this is tuned to my machine, especially the Niri config and the fonts, so read the diff first. The terminal expects **JetBrainsMono Nerd Font** to be installed.
 
-To apply changes after editing the chezmoi source:
+After editing anything in the chezmoi source, the same two commands push it to your home directory:
 
 ```sh
 chezmoi diff
 chezmoi apply
 ```
 
-## Theme switching
+## Switching themes
 
-Alacritty, Yazi, and Lazygit use the four variants from [nightfall.nvim](https://github.com/2giosangmitom/nightfall.nvim):
+The terminal and TUI apps share the four color variants from [nightfall.nvim](https://github.com/2giosangmitom/nightfall.nvim). Switch between them with:
 
 ```sh
 mitom-theme-switch nightfall
@@ -48,6 +32,6 @@ mitom-theme-switch maron
 mitom-theme-switch winter
 ```
 
-Run `mitom-theme-switch --list` to see the options, or run it without arguments to show the current variant. The selection is saved at `~/.config/nightfall/theme`; the default is `nightfall`.
+`mitom-theme-switch --list` prints the options, and running it with no arguments shows the current one. Your choice is saved in `~/.config/nightfall/theme`. If nothing is saved, it falls back to `nightfall`.
 
-`README.md` and `setup/` are listed in `.chezmoiignore` so chezmoi does not install them into the home directory.
+`README.md` and `setup/` are in `.chezmoiignore`, so they stay in the repo and never land in your home directory.
