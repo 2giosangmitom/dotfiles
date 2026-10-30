@@ -7,12 +7,6 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = require("config.lang").map("formatters"),
 	default_format_opts = { lsp_format = "fallback" },
-	format_on_save = function(buf)
-		if vim.g.disable_autoformat or vim.b[buf].disable_autoformat then
-			return
-		end
-		return { timeout_ms = 3000 }
-	end,
 })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

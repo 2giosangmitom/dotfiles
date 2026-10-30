@@ -7,10 +7,10 @@ return {
 		Hint = "",
 	},
 	dap = {
-		Breakpoint = "",
-		BreakpointCondition = "",
-		BreakpointRejected = "",
-		LogPoint = ".>",
-		Stopped = "󰁕",
+		Breakpoint = "",
+		BreakpointCondition = "",
+		BreakpointRejected = "",
+		LogPoint = "",
+		Stopped = "",
 	},
 }
