@@ -1,20 +1,36 @@
 {
   "plugins": {
+    "SchemaStore.nvim": {
+      "rev": "246ca2fa1323ee1312b84352ab09b8c2fa292888",
+      "src": "https://github.com/b0o/SchemaStore.nvim"
+    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "fzf-lua": {
       "rev": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d",
       "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitsigns.nvim": {
+      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "indent-blankline.nvim": {
+      "rev": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d",
+      "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "a338f44149f5673882c32629697d67b0c0547aec",
+      "rev": "cd6c64d85c9871aaf759d26f2371029d6d674a48",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -34,19 +50,43 @@
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.surround": {
-      "rev": "59ce0acf79e1d930756ef3a7cb4c2369560cf548",
+      "rev": "5357f00aca51a3b43e7775901b1ad9699f8c2678",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
+    "nvim-dap": {
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-ui": {
+      "rev": "cc9dd33aade7f20bae414d0cba163bc60d4d4b43",
+      "src": "https://github.com/rcarriga/nvim-dap-ui"
+    },
+    "nvim-dap-view": {
+      "rev": "b4486a6e83c45db4712849c09a76ef95b41a2133",
+      "src": "https://github.com/igorlfs/nvim-dap-view"
+    },
+    "nvim-jdtls": {
+      "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
+      "src": "https://github.com/mfussenegger/nvim-jdtls"
+    },
+    "nvim-lint": {
+      "rev": "52107ce2076a27a285af781248e2c59bad817cd0",
+      "src": "https://github.com/mfussenegger/nvim-lint"
+    },
     "nvim-lspconfig": {
-      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
+      "rev": "4b2b045b8ceb035f5c8bc9cab19b95706bfa6a19",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
+    "nvim-nio": {
+      "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
+      "src": "https://github.com/nvim-neotest/nvim-nio"
+    },
     "nvim-tree.lua": {
-      "rev": "3be8cad084e79e84833ef98cef88116c26a224ff",
+      "rev": "45f82f7b2c68c3e2bedbf6ad1d8d687a78e6faf4",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
@@ -57,6 +97,15 @@
     "render-markdown.nvim": {
       "rev": "8e8795368391036643b622875a6da6a51bcd33f4",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "rustaceanvim": {
+      "rev": "b7ca983c6ec88c94cf25e5deaad96df9a68b9a98",
+      "src": "https://github.com/mrcjkb/rustaceanvim",
+      "version": "9.0.0 - 10.0.0"
+    },
+    "smart-splits.nvim": {
+      "rev": "dd40c3a03ef71bcdf77fb4b14668cc1320293f48",
+      "src": "https://github.com/smart-splits-nvim/smart-splits.nvim"
     }
   }
 }
