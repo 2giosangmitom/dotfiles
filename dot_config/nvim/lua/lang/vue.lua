@@ -16,6 +16,9 @@ return {
 								location = vue_ls_path,
 								languages = { "vue" },
 								configNamespace = "typescript",
+								-- Required: autoUseWorkspaceTsdk makes vtsls use the project's
+								-- TypeScript, which ignores global plugins without this flag.
+								enableForWorkspaceTypeScriptVersions = true,
 							},
 						},
 					},

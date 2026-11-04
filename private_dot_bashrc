@@ -90,3 +90,6 @@ if have zoxide; then
   export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.local/share/chezmoi:$HOME/.local/share/chezmoi/*"
   eval "$(zoxide init bash)"
 fi
+
+# Vite+ bin (https://viteplus.dev)
+. "/home/chien/.config/vite-plus/env"

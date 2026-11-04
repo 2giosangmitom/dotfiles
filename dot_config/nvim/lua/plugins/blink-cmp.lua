@@ -5,4 +5,13 @@ vim.pack.add({
 require("blink.cmp").setup({
 	keymap = { preset = "super-tab" },
 	fuzzy = { implementation = "lua" },
+	sources = {
+		default = { "lsp", "path", "buffer", "snippets", "sqmeow" },
+		providers = {
+			sqmeow = {
+				name = "Sqmeow",
+				module = "sqmeow.completion.blink",
+			},
+		},
+	},
 })
