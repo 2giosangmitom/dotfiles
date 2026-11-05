@@ -57,6 +57,10 @@
       "rev": "5357f00aca51a3b43e7775901b1ad9699f8c2678",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
+    "mini.tabline": {
+      "rev": "3dd8686c15e3cfb1bfbc4abfecf699326f1de4c0",
+      "src": "https://github.com/nvim-mini/mini.tabline"
+    },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
