@@ -74,7 +74,7 @@ If included:
 **Wording:**
 
 - Avoid `I`, `we`, `now`, `currently`, and phrases like `This commit does...`.
-- Never add AI attribution or `Co-Authored-By` footers.
+- Never add AI attribution footers.
 
 ### 5. Commit
 
