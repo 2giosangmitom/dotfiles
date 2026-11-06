@@ -5,6 +5,7 @@
 --   parsers    string[]                       Treesitter parsers
 --   formatters table<string, string[]>        conform.nvim formatters by filetype
 --   linters    table<string, string[]>        nvim-lint linters by filetype
+--   dap        fun(dap)                       Debug adapters and configurations
 --   setup      fun()                          Anything else (filetypes, autocmds)
 local M = {}
 
@@ -15,8 +16,17 @@ function M.specs()
 	if not specs then
 		specs = {}
 		local files = vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/lang", "*.lua", false, true)
+		table.sort(files)
 		for _, file in ipairs(files) do
-			table.insert(specs, require("lang." .. vim.fn.fnamemodify(file, ":t:r")))
+			local name = vim.fn.fnamemodify(file, ":t:r")
+			local ok, spec = pcall(require, "lang." .. name)
+			if not ok then
+				vim.notify(("Failed to load language spec %q: %s"):format(name, spec), vim.log.levels.ERROR)
+			elseif type(spec) ~= "table" then
+				vim.notify(("Language spec %q must return a table"):format(name), vim.log.levels.ERROR)
+			else
+				table.insert(specs, spec)
+			end
 		end
 	end
 	return specs
@@ -39,7 +49,7 @@ end
 function M.map(field)
 	local result = {}
 	for _, spec in ipairs(M.specs()) do
-		result = vim.tbl_extend("force", result, spec[field] or {})
+		result = vim.tbl_deep_extend("force", result, spec[field] or {})
 	end
 	return result
 end

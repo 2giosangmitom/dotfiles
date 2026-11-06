@@ -13,8 +13,12 @@ local function bundles()
 	)
 	for _, jar in ipairs(vim.fn.glob(mason_packages .. "/java-test/extension/server/*.jar", false, true)) do
 		local name = vim.fn.fnamemodify(jar, ":t")
-		-- These two are not jdtls plugins and break it when bundled.
-		if name ~= "com.microsoft.java.test.runner-jar-with-dependencies.jar" and name ~= "jacocoagent.jar" then
+		-- These are not jdtls plugins, or duplicate bundles jdtls already provides.
+		if
+			name ~= "com.microsoft.java.test.runner-jar-with-dependencies.jar"
+			and name ~= "jacocoagent.jar"
+			and not name:match("^org%.objectweb%.asm")
+		then
 			table.insert(result, jar)
 		end
 	end
