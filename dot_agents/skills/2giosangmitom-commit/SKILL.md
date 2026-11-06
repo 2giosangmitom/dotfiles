@@ -80,10 +80,8 @@ If included:
 
 Stay on the current branch. Do not switch branches or amend commits unless requested.
 
-Write the message to a temporary file and run:
-
 ```bash
-git commit -F <temp-file>
+git commit -m "feat(scope): subject" -m "Body paragraph."
 ```
 
 Never use `--no-verify`. If a hook fails, show its output and stop. Never push.
