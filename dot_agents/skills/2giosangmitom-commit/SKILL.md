@@ -23,7 +23,7 @@ Run `git rev-parse --is-inside-work-tree`. Stop if this is not a Git repository.
 Inspect recent history:
 
 ```bash
-git log -n 10 --format='%s%n%b'
+git log -n 30 --format='%s%n%b'
 ```
 
 Match the repository's subject prefixes, casing, tense, and body style.
