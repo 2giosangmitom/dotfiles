@@ -1,8 +1,5 @@
 return {
-	servers = {
-		dockerls = {},
-		docker_compose_language_service = {},
-	},
+	servers = { "dockerls", "docker_compose_language_service" },
 	tools = { "hadolint" },
 	parsers = { "dockerfile", "yaml" },
 	linters = { dockerfile = { "hadolint" } },

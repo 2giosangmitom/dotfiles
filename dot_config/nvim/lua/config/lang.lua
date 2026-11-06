@@ -1,11 +1,10 @@
 -- Language support is split into lua/lang/<name>.lua. Each file returns a spec
 -- with any of these fields, which the plugin modules collect:
---   servers    table<string, vim.lsp.Config>  LSP servers to configure and enable
+--   servers    string[]                       LSP server names to enable (configs live in after/lsp/)
 --   tools      string[]                       Extra Mason packages (formatters, linters, debuggers)
 --   parsers    string[]                       Treesitter parsers
 --   formatters table<string, string[]>        conform.nvim formatters by filetype
 --   linters    table<string, string[]>        nvim-lint linters by filetype
---   dap        fun(dap)                       Debug adapters and configurations
 --   setup      fun()                          Anything else (filetypes, autocmds)
 local M = {}
 

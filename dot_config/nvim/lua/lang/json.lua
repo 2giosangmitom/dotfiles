@@ -3,16 +3,7 @@ vim.pack.add({
 })
 
 return {
-	servers = {
-		jsonls = {
-			settings = {
-				json = {
-					schemas = require("schemastore").json.schemas(),
-					validate = { enable = true },
-				},
-			},
-		},
-	},
+	servers = { "jsonls" },
 	tools = { "oxfmt" },
 	parsers = { "json", "json5" },
 	formatters = {

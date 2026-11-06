@@ -10,10 +10,10 @@ local icons = require("config.icons").dap
 -- Open the view when a session starts and close it when the session ends.
 dap_view.setup({ auto_toggle = true })
 
-for _, spec in ipairs(require("config.lang").specs()) do
-	if spec.dap then
-		spec.dap(dap)
-	end
+-- Load per-language DAP adapters and configurations from after/dap/.
+local dap_files = vim.fn.globpath(vim.fn.stdpath("config") .. "/after/dap", "*.lua", false, true)
+for _, file in ipairs(dap_files) do
+	loadfile(file)()
 end
 
 vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })

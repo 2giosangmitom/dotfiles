@@ -1,17 +1,5 @@
 return {
-	servers = {
-		lua_ls = {
-			settings = {
-				Lua = {
-					runtime = { version = "LuaJIT" },
-					workspace = {
-						checkThirdParty = false,
-						library = { vim.env.VIMRUNTIME },
-					},
-				},
-			},
-		},
-	},
+	servers = { "lua_ls" },
 	tools = { "stylua" },
 	parsers = { "lua", "luadoc" },
 	formatters = { lua = { "stylua" } },

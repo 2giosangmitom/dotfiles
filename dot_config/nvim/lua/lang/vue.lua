@@ -1,33 +1,9 @@
 -- Vue 3 uses the TypeScript plugin bundled with Mason's vue-language-server.
-local vue_ls_path = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
-
+-- vtsls config (including the Vue plugin) lives in after/lsp/vtsls.lua.
 return {
-	servers = {
-		vue_ls = {},
-		-- Merged into the vtsls config from lang/typescript.lua.
-		vtsls = {
-			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-			settings = {
-				vtsls = {
-					tsserver = {
-						globalPlugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_ls_path,
-								languages = { "vue" },
-								configNamespace = "typescript",
-								-- Required: autoUseWorkspaceTsdk makes vtsls use the project's
-								-- TypeScript, which ignores global plugins without this flag.
-								enableForWorkspaceTypeScriptVersions = true,
-							},
-						},
-					},
-				},
-			},
-		},
-	},
-	tools = { "oxfmt", "oxlint" },
-	parsers = { "vue", "css" },
+	servers = { "vue_ls" },
+	tools = { "oxlint" },
+	parsers = { "vue" },
 	formatters = { vue = { "oxfmt" } },
 	linters = { vue = { "oxlint" } },
 }

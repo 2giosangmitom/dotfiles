@@ -3,17 +3,7 @@ vim.pack.add({
 })
 
 return {
-	servers = {
-		yamlls = {
-			settings = {
-				yaml = {
-					-- Use SchemaStore.nvim instead of yamlls' built-in store.
-					schemaStore = { enable = false, url = "" },
-					schemas = require("schemastore").yaml.schemas(),
-				},
-			},
-		},
-	},
+	servers = { "yamlls" },
 	tools = { "oxfmt" },
 	parsers = { "yaml" },
 	formatters = { yaml = { "oxfmt" } },
