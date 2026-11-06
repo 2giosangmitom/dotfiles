@@ -1,6 +1,6 @@
 ---
 name: 2giosangmitom-commit
-description: Commit staged or pending changes using the repository's commit style. Use only when the user explicitly asks to commit.
+description: Commit staged or unstaged changes using the repository's commit style. Use only when the user explicitly asks to commit.
 argument-hint: [guidance for the commit message]
 disable-model-invocation: true
 allowed-tools: Bash(git *), Bash(gh issue view *), Bash(gh pr view *)
@@ -38,17 +38,17 @@ git diff --cached
 git diff
 ```
 
-- If changes are staged, commit only those changes.
-- If nothing is staged, run `git add -A`.
-- Never stage secret-looking files: `.env*`, `*.pem`, `*.key`, `credentials*`, `*token*`. Report excluded files.
+- If changes are already staged, commit only those changes. Do not stage unstaged changes.
+- If no changes are staged, run `git add -A`.
+- Never stage files that may contain secrets: `.env*`, `*.pem`, `*.key`, `credentials*`, `*token*`. If any are already staged, unstage them and report the excluded files.
 - If there are no changes, stop.
-- Review `git diff --cached` before committing.
+- Review `git diff --cached` after staging. Ensure no unintended or sensitive files are included before committing.
 
 ### 4. Write the commit message
 
 **Subject:**
 
-- Under 72 characters.
+- Aim for 50 characters or fewer. Maximum 72.
 - Follow repository conventions.
 - Describe the change, not the act of committing.
 - No trailing period.
@@ -66,7 +66,7 @@ If included:
 
 **References:**
 
-- Only add issue/PR references when requested.
+- Only add issue/PR references when explicitly requested by the user.
 - Verify each using `gh issue view <n>` or `gh pr view <n>`.
 - Use `Closes #<n>` for resolved issues and `Refs #<n>` for related ones.
 - Never guess reference numbers.
@@ -74,13 +74,13 @@ If included:
 **Wording:**
 
 - Avoid `I`, `we`, `now`, `currently`, and phrases like `This commit does...`.
-- Never add something like `Generated with Claude Code` in the commit body, only `Co-authored-by` is allowed.
+- Never add phrases such as `Generated with Claude Code` to the commit message. Only `Co-authored-by` trailers are allowed.
 
 ### 5. Commit
 
 Stay on the current branch. Do not switch branches or amend commits unless requested.
 
-Write the message to a temporary scratchpad file and run:
+Write the message to a temporary file and run:
 
 ```bash
 git commit -F <temp-file>
