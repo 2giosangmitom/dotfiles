@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 set -eu
 
 state_file="$HOME/.config/nightfall/theme"
@@ -18,17 +19,17 @@ if [ "$#" -ne 1 ]; then
 fi
 
 case "$1" in
-  --list)
-    printf '%s\n' nightfall deeper-night maron winter
-    exit 0
-    ;;
-  nightfall|deeper-night|maron|winter) ;;
-  *)
-    printf 'Unknown Nightfall theme: %s\n' "$1" >&2
-    exit 2
-    ;;
+--list)
+  printf '%s\n' nightfall deeper-night maron winter
+  exit 0
+  ;;
+nightfall | deeper-night | maron | winter) ;;
+*)
+  printf 'Unknown Nightfall theme: %s\n' "$1" >&2
+  exit 2
+  ;;
 esac
 
 mkdir -p "$(dirname "$state_file")"
-printf '%s\n' "$1" > "$state_file"
+printf '%s\n' "$1" >"$state_file"
 chezmoi apply "$HOME/.config/alacritty" "$HOME/.config/yazi" "$HOME/.config/lazygit"
