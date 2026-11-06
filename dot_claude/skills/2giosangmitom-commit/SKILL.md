@@ -23,7 +23,7 @@ Run `git rev-parse --is-inside-work-tree`. Stop if this is not a Git repository.
 Inspect recent history:
 
 ```bash
-git log -n 30 --format='%s%n%b'
+git log -n 10 --format='%s%n%b'
 ```
 
 Match the repository's subject prefixes, casing, tense, and body style.
@@ -48,7 +48,7 @@ git diff
 
 **Subject:**
 
-- Under 80 characters.
+- Under 72 characters.
 - Follow repository conventions.
 - Describe the change, not the act of committing.
 - No trailing period.
@@ -74,7 +74,7 @@ If included:
 **Wording:**
 
 - Avoid `I`, `we`, `now`, `currently`, and phrases like `This commit does...`.
-- Never add AI attribution footers.
+- Never add something like `Generated with Claude Code` in the commit body, only `Co-authored-by` is allowed.
 
 ### 5. Commit
 
