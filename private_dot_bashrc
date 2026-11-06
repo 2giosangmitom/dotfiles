@@ -1,18 +1,19 @@
+#
+# ~/.bashrc
+#
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Helpers
 have() { command -v "$1" >/dev/null 2>&1; }
 
-# ---------------------------------------------------------------------------
 # Environment
-# ---------------------------------------------------------------------------
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
 
-# ---------------------------------------------------------------------------
 # Shell options
-# ---------------------------------------------------------------------------
 shopt -s autocd         # `dir` is shorthand for `cd dir`
 shopt -s cdspell        # fix minor typos in cd arguments
 shopt -s dirspell       # fix minor typos during directory completion
@@ -26,48 +27,30 @@ shopt -s histverify     # edit history expansions (!!) before running them
 # Don't let Ctrl-S freeze the terminal
 stty -ixon 2>/dev/null
 
-# ---------------------------------------------------------------------------
 # History
-# ---------------------------------------------------------------------------
 HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=100000
 HISTFILESIZE=200000
 HISTIGNORE="ls:ll:la:cd:pwd:exit:clear"
 HISTTIMEFORMAT="%F %T  "
 
-# ---------------------------------------------------------------------------
 # Completion
-# ---------------------------------------------------------------------------
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "set colored-stats on"
 bind "set mark-symlinked-directories on"
 
-if ! shopt -oq posix && [[ -r /usr/share/bash-completion/bash_completion ]]; then
-  . /usr/share/bash-completion/bash_completion
-fi
-
-# ---------------------------------------------------------------------------
 # Aliases
-# ---------------------------------------------------------------------------
 if have eza; then
   alias ls="eza --color=auto --group-directories-first --icons=auto"
-  alias ll="eza -lh --git --group-directories-first --icons=auto"
-  alias la="eza -lah --git --group-directories-first --icons=auto"
-  alias lt="eza --tree --level=2 --group-directories-first --icons=auto"
+  alias ll="ls -lh --git"
+  alias la="ll -a"
+  alias lt="ls --tree"
 else
   alias ls="ls --color=auto --group-directories-first"
 fi
-
-alias grep="grep --color=auto"
-alias diff="diff --color=auto"
-alias ..="cd .."
-alias ...="cd ../.."
 alias mkdir="mkdir -pv"
 
-# ---------------------------------------------------------------------------
-# Functions
-# ---------------------------------------------------------------------------
 # Open yazi and cd into the directory it was left in.
 y() {
   local tmp cwd
@@ -78,18 +61,14 @@ y() {
   command rm -f -- "$tmp"
 }
 
-# ---------------------------------------------------------------------------
 # Tool integrations
-# ---------------------------------------------------------------------------
 have starship && eval "$(starship init bash)"
 have fzf && eval "$(fzf --bash)"
 have mise && eval "$(mise activate bash)"
-
 if have zoxide; then
-  # Keep $HOME (the default) and skip the chezmoi source tree.
   export _ZO_EXCLUDE_DIRS="$HOME:$HOME/.local/share/chezmoi:$HOME/.local/share/chezmoi/*"
   eval "$(zoxide init bash)"
 fi
 
-# Vite+ bin (https://viteplus.dev)
-. "/home/chien/.config/vite-plus/env"
+# Vite Plus
+. "$HOME/.config/vite-plus/env"
