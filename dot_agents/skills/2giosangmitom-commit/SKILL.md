@@ -81,7 +81,7 @@ If included:
 Stay on the current branch. Do not switch branches or amend commits unless requested.
 
 ```bash
-git commit -m "feat(scope): subject" -m "Body paragraph."
+git commit -m "Subject" -m "Body paragraph."
 ```
 
 Never use `--no-verify`. If a hook fails, show its output and stop. Never push.
