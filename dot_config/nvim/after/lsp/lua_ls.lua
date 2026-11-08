@@ -8,7 +8,7 @@ end
 return {
 	settings = {
 		Lua = {
-			runtime = { version = "LuaJIT" },
+			runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
 			workspace = {
 				checkThirdParty = false,
 				-- Makes `vim` and Neovim's type annotations visible to lua_ls.
