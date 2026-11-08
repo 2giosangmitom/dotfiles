@@ -2,6 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 require("config.diagnostics")
+require("config.loader")
 require("config.plugins")
 
 vim.api.nvim_create_user_command("Pack", function()

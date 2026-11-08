@@ -49,9 +49,17 @@
       "rev": "6e9c563cb71a8e4d57c4fb4089eb90a3bf3e8851",
       "src": "https://github.com/nvim-mini/mini.bufremove"
     },
+    "mini.clue": {
+      "rev": "00458af282617a392c6294c589f0ad0946348978",
+      "src": "https://github.com/nvim-mini/mini.clue"
+    },
     "mini.icons": {
       "rev": "eab3e692d796d78ea6ffc978d8a380ff26fcf4e3",
       "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "mini.misc": {
+      "rev": "30236840a4791fc1a5ff628eda0a15a39a453345",
+      "src": "https://github.com/nvim-mini/mini.misc"
     },
     "mini.pairs": {
       "rev": "03eb1f0062a2cee5314d1ac3939246e4bb21352e",

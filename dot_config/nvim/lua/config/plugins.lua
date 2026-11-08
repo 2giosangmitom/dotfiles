@@ -1,8 +1,9 @@
--- Load plugin modules; each handles its own installation and setup.
-local files = vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/plugins", "*.lua", false, true)
-table.sort(files)
-
-for _, file in ipairs(files) do
-	local module = "plugins." .. vim.fn.fnamemodify(file, ":t:r")
-	require(module)
+-- Load plugin groups in dependency order; each handles its own installation and setup.
+--   ui          colorscheme, icons, statusline, tabline, visual helpers
+--   editor      editing defaults, text objects, git, treesitter
+--   navigation  pickers, file explorer, windows, buffers
+--   lsp         Mason, completion, LSP, formatting, linting
+--   dap         debugging
+for _, name in ipairs({ "ui", "editor", "navigation", "lsp", "dap" }) do
+	require("plugins." .. name)
 end

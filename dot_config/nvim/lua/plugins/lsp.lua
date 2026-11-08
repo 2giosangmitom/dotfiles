@@ -1,56 +1,121 @@
-vim.pack.add({
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/b0o/SchemaStore.nvim" },
-})
+-- Language tooling: Mason, completion, LSP, formatting and linting.
 
-require("plugins.mason")
-require("plugins.blink-cmp")
+-- Mason
+do
+	vim.pack.add({
+		{ src = "https://github.com/mason-org/mason.nvim" },
+		{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	})
 
-local lang = require("config.lang")
-local servers = lang.list("servers")
+	require("mason").setup()
 
-vim.lsp.config("*", {
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-})
+	local lang = require("config.lang")
 
--- Buffer-local LSP maps. Neovim already provides K, grn, gra, grr, gri, grO
--- and the default ]d/[d diagnostic jumps.
-local function on_attach(_, bufnr)
-	local map = function(lhs, rhs, desc)
-		vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
-	end
+	-- Install LSP servers declared by language specs.
+	require("mason-lspconfig").setup({
+		ensure_installed = lang.list("servers"),
+		automatic_enable = false, -- Servers are enabled explicitly in plugins/lsp.lua
+	})
 
-	map("<leader>cd", vim.diagnostic.open_float, "Line diagnostics")
-	map("<leader>cr", vim.lsp.buf.rename, "Rename symbol")
-	map("<leader>ca", vim.lsp.buf.code_action, "Code action")
-	map("]e", function()
-		vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, float = true })
-	end, "Next error")
-	map("[e", function()
-		vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, float = true })
-	end, "Previous error")
-end
-
-for _, spec in ipairs(lang.specs()) do
-	if spec.setup then
-		spec.setup()
-	end
-end
-
--- Server options live in after/lsp/<server>.lua. Only wrap on_attach here so
--- shared maps, nvim-lspconfig's own callbacks (e.g. clangd commands) and the
--- after/lsp callback all run instead of the last one replacing the others.
-for _, name in ipairs(servers) do
-	local base = vim.lsp.config[name] or {}
-	local base_attach = base.on_attach
-	vim.lsp.config(name, {
-		on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
-			if base_attach then
-				base_attach(client, bufnr)
+	-- Install formatters, linters and debuggers declared by language specs.
+	local registry = require("mason-registry")
+	registry.refresh(function()
+		for _, name in ipairs(lang.list("tools")) do
+			local ok, pkg = pcall(registry.get_package, name)
+			if not ok then
+				vim.notify("Mason package not found: " .. name, vim.log.levels.WARN)
+			elseif not pkg:is_installed() and not pkg:is_installing() then
+				pkg:install()
 			end
+		end
+	end)
+end
+
+-- Completion
+vim.pack.add({
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+})
+
+require("blink.cmp").setup({
+	keymap = { preset = "super-tab" },
+	fuzzy = { implementation = "lua" },
+	sources = {
+		default = { "lsp", "path", "buffer", "snippets", "sqmeow" },
+		providers = {
+			sqmeow = {
+				name = "Sqmeow",
+				module = "sqmeow.completion.blink",
+			},
+		},
+	},
+})
+
+-- LSP
+do
+	vim.pack.add({
+		{ src = "https://github.com/neovim/nvim-lspconfig" },
+		{ src = "https://github.com/b0o/SchemaStore.nvim" },
+	})
+
+	local lang = require("config.lang")
+	local servers = lang.list("servers")
+
+	vim.lsp.config("*", {
+		capabilities = require("blink.cmp").get_lsp_capabilities(),
+	})
+
+	require("config.lsp").setup()
+
+	for _, spec in ipairs(lang.specs()) do
+		if spec.setup then
+			spec.setup()
+		end
+	end
+
+	-- Server options live in after/lsp/<server>.lua.
+	vim.lsp.enable(servers)
+end
+
+-- Formatting
+do
+	vim.pack.add({
+		{ src = "https://github.com/stevearc/conform.nvim" },
+	})
+
+	local conform = require("conform")
+
+	conform.setup({
+		formatters_by_ft = require("config.lang").map("formatters"),
+		default_format_opts = { lsp_format = "fallback" },
+	})
+
+	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+	vim.keymap.set({ "n", "x" }, "<leader>cf", function()
+		conform.format()
+	end, { desc = "Format" })
+
+	vim.keymap.set("n", "<leader>uf", function()
+		vim.g.disable_autoformat = not vim.g.disable_autoformat
+		vim.notify("Format on save " .. (vim.g.disable_autoformat and "disabled" or "enabled"))
+	end, { desc = "Toggle format on save" })
+end
+
+-- Linting
+do
+	vim.pack.add({
+		{ src = "https://github.com/mfussenegger/nvim-lint" },
+	})
+
+	local lint = require("lint")
+
+	lint.linters_by_ft = require("config.lang").map("linters")
+
+	-- Some linters (e.g. oxlint) read the file from disk, so lint on read and write.
+	vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
+		group = vim.api.nvim_create_augroup("user_lint", { clear = true }),
+		callback = function()
+			lint.try_lint()
 		end,
 	})
 end
-
-vim.lsp.enable(servers)
