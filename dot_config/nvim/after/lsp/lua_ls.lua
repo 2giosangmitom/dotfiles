@@ -1,20 +1,12 @@
-local library = { vim.env.VIMRUNTIME }
-local lspconfig = vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1]
-if lspconfig then
-	table.insert(library, lspconfig)
-end
-
 ---@type vim.lsp.Config
 return {
 	settings = {
 		Lua = {
 			runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
 			workspace = {
-				checkThirdParty = false,
-				-- Makes `vim` and Neovim's type annotations visible to lua_ls.
-				library = library,
+				ignoreSubmodules = true,
+				library = { vim.env.VIMRUNTIME },
 			},
-			telemetry = { enable = false },
 		},
 	},
 }
