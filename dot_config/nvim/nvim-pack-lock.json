@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "06012297e4d5d089ce5ac4cc8011a8f3c0148190",
+      "rev": "d3e2250efab001fba40d2226361c0060ccf18fd6",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -18,7 +18,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "fzf-lua": {
-      "rev": "11357ee24a9f092b1db503237eb57e2a11e48434",
+      "rev": "22f0bbd3140a8a3b34fec75e5a640513ca6d4ce3",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "3a5cd6d562a01f6829a35ae761dc383264ea452b",
+      "rev": "55eceab8975036ac43a4176cbfe0d4bf1ddae93f",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -62,7 +62,7 @@
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "mini.tabline": {
-      "rev": "3dd8686c15e3cfb1bfbc4abfecf699326f1de4c0",
+      "rev": "d77cc478ec18fc8e8651b69233b02d5b32ed2b74",
       "src": "https://github.com/nvim-mini/mini.tabline"
     },
     "nui.nvim": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/rcarriga/nvim-dap-ui"
     },
     "nvim-dap-view": {
-      "rev": "8cfadf9e6784f0af5d5efa1e435e77d51ca14741",
+      "rev": "bfaf50b3f513f78d8ab3e5fe02128dda05be4945",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-jdtls": {
@@ -90,7 +90,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "d5c7e7bcc15bccc01bf1601a03473e10de2f0f7e",
+      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -98,16 +98,16 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-tree.lua": {
-      "rev": "4cb123287efe9a7191cce287a005d4a9c8bed4a0",
+      "rev": "7e1da84aaffb413e1fa47b3895e5caa12501142d",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "915f2bd3d4e2a33704bfc476b5137e9befa82f3d",
+      "rev": "19bdfc04f40ed2ccb3340591d125f759b0406875",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "render-markdown.nvim": {
-      "rev": "8e8795368391036643b622875a6da6a51bcd33f4",
+      "rev": "eef01965fd23156bab6d8f7d678d1161a7f621e6",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
@@ -116,7 +116,7 @@
       "version": "9.0.0 - 10.0.0"
     },
     "smart-splits.nvim": {
-      "rev": "6a03b298635205802ee1d390826f02414a13290d",
+      "rev": "fdd0142633ae78b175ff29043953e701215a34dd",
       "src": "https://github.com/smart-splits-nvim/smart-splits.nvim"
     }
   }
