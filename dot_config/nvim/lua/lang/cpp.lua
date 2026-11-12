@@ -1,5 +1,6 @@
 -- clangd reads compile_commands.json (e.g. from CMake's CMAKE_EXPORT_COMPILE_COMMANDS).
 -- Formatting falls back to clangd, which applies the project's .clang-format.
+---@type config.LangSpec
 return {
 	servers = { "clangd" },
 	tools = { "codelldb" },

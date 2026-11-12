@@ -1,3 +1,4 @@
+---@type config.LangSpec
 return {
 	servers = { "tombi" },
 	tools = { "oxfmt" },

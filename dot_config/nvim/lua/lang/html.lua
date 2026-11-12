@@ -1,6 +1,7 @@
+---@type config.LangSpec
 return {
 	servers = { "html" },
-	tools = { "html-lsp", "oxfmt" },
+	tools = { "oxfmt" },
 	parsers = { "html" },
 	formatters = { html = { "oxfmt" } },
 }

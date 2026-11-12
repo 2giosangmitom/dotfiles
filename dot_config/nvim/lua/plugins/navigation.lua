@@ -8,14 +8,38 @@ do
 
 	local fzf = require("fzf-lua")
 
+	-- The "border-fused" profile draws one frame around the list and preview,
+	-- but with rounded corners. Reuse its layout logic with square corners.
+	local fused = require("fzf-lua.profiles.border-fused").winopts
+	local square = { ["╭"] = "┌", ["╮"] = "┐", ["╯"] = "┘", ["╰"] = "└" }
+
+	--- Wrap a profile border function to replace rounded corners with square ones.
+	---@param border fun(...): string|string[]
+	---@return fun(...): string|string[]
+	local function squared(border)
+		return function(...)
+			local result = border(...)
+			if type(result) == "table" then
+				result = vim.tbl_map(function(char)
+					return square[char] or char
+				end, result)
+			end
+			return result
+		end
+	end
+
 	fzf.setup({
-		"border-fused", -- One rounded frame around the list and preview
+		"border-fused",
 		fzf_colors = true, -- Derive fzf colors from the colorscheme
 		defaults = {
 			file_icons = "mini",
 			git_icons = true,
 		},
 		winopts = {
+			-- fzf-lua accepts border functions (its own profile uses one), but its
+			-- type annotation doesn't list them.
+			---@diagnostic disable-next-line: assign-type-mismatch
+			border = squared(fused.border),
 			width = 0.87,
 			height = 0.80,
 			row = 0.5,
@@ -26,9 +50,11 @@ do
 				horizontal = "right:55%",
 				vertical = "down:50%",
 				scrollbar = false,
+				border = squared(fused.preview.border),
 			},
 		},
 		fzf_opts = {
+			["--layout"] = "reverse", -- Prompt on top, results below it
 			["--info"] = "inline-right",
 			["--pointer"] = "▌",
 			["--marker"] = "▍",
@@ -77,7 +103,56 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 })
 
-require("nvim-tree").setup({})
+do
+	local icons = require("config.icons")
+	require("nvim-tree").setup({
+		hijack_cursor = true, -- Keep the cursor on the file name
+		sync_root_with_cwd = true, -- Follow the working directory (set by mini.misc auto root)
+		update_focused_file = { enable = true }, -- Reveal the current file
+		view = { width = 32, preserve_window_proportions = true },
+		renderer = {
+			root_folder_label = ":t", -- Just the project folder name
+			highlight_git = "name",
+			highlight_opened_files = "name",
+			indent_markers = { enable = true },
+			icons = {
+				git_placement = "after",
+				glyphs = {
+					folder = {
+						arrow_closed = icons.get("FoldClosed"),
+						arrow_open = icons.get("FoldOpened"),
+						default = icons.get("FolderClosed"),
+						open = icons.get("FolderOpen"),
+						empty = icons.get("FolderEmpty"),
+						empty_open = icons.get("FolderEmptyOpen"),
+						symlink = icons.get("FolderSymlink"),
+						symlink_open = icons.get("FolderSymlink"),
+					},
+					git = {
+						unstaged = icons.get("GitUnstaged"),
+						staged = icons.get("GitStaged"),
+						unmerged = icons.get("GitConflict"),
+						renamed = icons.get("GitRenamed"),
+						untracked = icons.get("GitUntracked"),
+						deleted = icons.get("GitDelete"),
+						ignored = icons.get("GitIgnored"),
+					},
+				},
+			},
+		},
+		diagnostics = {
+			enable = true,
+			show_on_dirs = true,
+			icons = {
+				error = icons.get("DiagnosticError"),
+				warning = icons.get("DiagnosticWarn"),
+				info = icons.get("DiagnosticInfo"),
+				hint = icons.get("DiagnosticHint"),
+			},
+		},
+		modified = { enable = true },
+	})
+end
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 

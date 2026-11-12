@@ -1,4 +1,5 @@
--- Prefer the project's virtualenv for running the debuggee.
+--- Python interpreter for the debuggee, preferring the project's virtualenv.
+---@return string
 local function python_path()
 	local venv = vim.env.VIRTUAL_ENV
 	if not venv and vim.fn.isdirectory(vim.fn.getcwd() .. "/.venv") == 1 then
@@ -7,6 +8,7 @@ local function python_path()
 	return venv and venv .. "/bin/python" or vim.fn.exepath("python3")
 end
 
+---@type config.LangSpec
 return {
 	servers = { "ty", "ruff" },
 	tools = { "debugpy" },

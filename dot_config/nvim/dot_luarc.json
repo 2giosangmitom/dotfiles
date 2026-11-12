@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "runtime.version": "LuaJIT",
+  "workspace.checkThirdParty": false,
+  "workspace.ignoreSubmodules": true,
+  "workspace.library": [
+    "$VIMRUNTIME/lua",
+    "~/.local/share/nvim/site/pack/core/opt",
+    "~/Workspace/sqmeow.nvim/lua",
+    "~/Workspace/nightfall.nvim/lua"
+  ]
+}

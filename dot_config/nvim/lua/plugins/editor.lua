@@ -38,7 +38,18 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 })
 
-require("gitsigns").setup()
+do
+	local icons = require("config.icons")
+	local signs = {
+		add = { text = icons.get("GitSignAdd") },
+		change = { text = icons.get("GitSignChange") },
+		delete = { text = icons.get("GitSignDelete") },
+		topdelete = { text = icons.get("GitSignTopDelete") },
+		changedelete = { text = icons.get("GitSignChangeDelete") },
+		untracked = { text = icons.get("GitSignUntracked") },
+	}
+	require("gitsigns").setup({ signs = signs, signs_staged = signs })
+end
 
 -- Treesitter
 vim.pack.add({
@@ -49,6 +60,7 @@ require("nvim-treesitter").install(require("config.lang").list("parsers"))
 
 -- Enable highlighting for filetypes with an installed parser.
 vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("user_treesitter", { clear = true }),
 	callback = function(args)
 		pcall(vim.treesitter.start, args.buf)
 	end,
@@ -62,16 +74,21 @@ Config.later(function()
 
 	local clue = require("mini.clue")
 
+	local icon = require("config.icons").get
+
 	---@type table[]
 	local leader_groups = {
-		{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
-		{ mode = "n", keys = "<Leader>c", desc = "+Code" },
-		{ mode = "n", keys = "<Leader>d", desc = "+Debug" },
-		{ mode = "n", keys = "<Leader>f", desc = "+Find" },
-		{ mode = "n", keys = "<Leader>u", desc = "+UI" },
-		{ mode = "x", keys = "<Leader>c", desc = "+Code" },
-		{ mode = "x", keys = "<Leader>d", desc = "+Debug" },
-		{ mode = "x", keys = "<Leader>f", desc = "+Find" },
+		{ mode = "n", keys = "<Leader>b", desc = icon("Buffer", 1) .. "Buffer" },
+		{ mode = "n", keys = "<Leader>c", desc = icon("Code", 1) .. "Code" },
+		{ mode = "n", keys = "<Leader>d", desc = icon("Debugger", 1) .. "Debug" },
+		{ mode = "n", keys = "<Leader>f", desc = icon("Search", 1) .. "Find" },
+		{ mode = "n", keys = "<Leader>t", desc = icon("Test", 1) .. "Test" },
+		{ mode = "n", keys = "<Leader>u", desc = icon("Settings", 1) .. "UI" },
+		{ mode = "n", keys = "<Leader>cx", desc = icon("Code", 1) .. "Extract" },
+		{ mode = "x", keys = "<Leader>cx", desc = icon("Code", 1) .. "Extract" },
+		{ mode = "x", keys = "<Leader>c", desc = icon("Code", 1) .. "Code" },
+		{ mode = "x", keys = "<Leader>d", desc = icon("Debugger", 1) .. "Debug" },
+		{ mode = "x", keys = "<Leader>f", desc = icon("Search", 1) .. "Find" },
 	}
 
 	clue.setup({
@@ -111,6 +128,6 @@ Config.later(function()
 			clue.gen_clues.windows(),
 			clue.gen_clues.z(),
 		},
-		window = { delay = 300 },
+		window = { delay = 300, config = { width = "auto" } },
 	})
 end)

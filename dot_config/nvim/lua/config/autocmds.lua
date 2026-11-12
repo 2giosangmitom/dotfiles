@@ -1,4 +1,4 @@
--- Highlight on yank is provided by mini.basics.
+-- Highlight on yank is provided by mini.basics; cursor restore by mini.misc.
 local group = vim.api.nvim_create_augroup("user_autocmds", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -22,24 +22,10 @@ autocmd("VimResized", {
 	end,
 })
 
--- Restore cursor to the last position when reopening a file
-autocmd("BufReadPost", {
-	group = group,
-	callback = function(event)
-		if vim.bo[event.buf].filetype == "gitcommit" then
-			return
-		end
-		local mark = vim.api.nvim_buf_get_mark(event.buf, '"')
-		if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(event.buf) then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-		end
-	end,
-})
-
 -- Close utility windows with q
 autocmd("FileType", {
 	group = group,
-	pattern = { "help", "qf", "man", "checkhealth", "lspinfo", "nvim-pack" },
+	pattern = { "help", "qf", "man", "checkhealth", "nvim-pack" },
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
 		vim.keymap.set("n", "q", function()

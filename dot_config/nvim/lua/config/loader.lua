@@ -1,6 +1,4 @@
----@brief
 --- Loading helpers built on `MiniMisc.safely()`.
----
 --- Each helper runs a callback at the appropriate time and reports any error
 --- as a warning instead of aborting startup.
 
@@ -10,14 +8,8 @@ local safely = require("mini.misc").safely
 
 ---@alias config.Callback fun()
 
+--- Each function is documented where it is defined.
 ---@class config.Loader
----@field now fun(f: config.Callback) Run immediately.
----@field later fun(f: config.Callback) Run shortly after startup.
----@field on_event fun(ev: string, f: config.Callback) Run once on the first matching event.
----@field on_filetype fun(ft: string, f: config.Callback) Run once on the first matching filetype.
----@field now_if_args fun(f: config.Callback) `now` when Neovim starts with file arguments, otherwise `later`.
-
----@type config.Loader
 local Config = {}
 
 --- Run `f` immediately. Use for what must exist during startup.
@@ -49,6 +41,26 @@ end
 --- Run `f` immediately when files were passed on the command line, else later.
 ---@type fun(f: config.Callback)
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
+
+local local_dir = vim.fn.expand("~/Workspace")
+
+--- Whether a local plugin checkout exists in ~/Workspace.
+---@param name string Directory name, e.g. `"nightfall.nvim"`.
+---@return boolean
+function Config.has_local(name)
+	return vim.uv.fs_stat(vim.fs.joinpath(local_dir, name)) ~= nil
+end
+
+--- Add a local plugin checkout from ~/Workspace to 'runtimepath', if it exists.
+---@param name string
+---@return boolean added
+function Config.add_local(name)
+	if not Config.has_local(name) then
+		return false
+	end
+	vim.opt.rtp:prepend(vim.fs.joinpath(local_dir, name))
+	return true
+end
 
 ---@type config.Loader
 _G.Config = Config

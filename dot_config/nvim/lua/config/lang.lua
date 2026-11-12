@@ -1,17 +1,21 @@
--- Language support is split into lua/lang/<name>.lua. Each file returns a spec
--- with any of these fields, which the plugin modules collect:
---   servers    string[]                       LSP server names to enable (configs live in after/lsp/)
---   tools      string[]                       Extra Mason packages (formatters, linters, debuggers)
---   parsers    string[]                       Treesitter parsers
---   formatters table<string, string[]>        conform.nvim formatters by filetype
---   linters    table<string, string[]>        nvim-lint linters by filetype
---   dap        fun(dap)                       Debug adapters and configurations
---   setup      fun()                          Anything else (filetypes, autocmds)
+--- Language support is split into lua/lang/<name>.lua. Each file returns a
+--- `config.LangSpec`, which the plugin modules collect.
+
+---@class config.LangSpec
+---@field servers? string[] LSP server names to enable (configs live in after/lsp/)
+---@field tools? string[] Extra Mason packages (formatters, linters, debuggers)
+---@field parsers? string[] Treesitter parsers
+---@field formatters? table<string, string[]> conform.nvim formatters by filetype
+---@field linters? table<string, string[]> nvim-lint linters by filetype
+---@field dap? fun(dap: table) Debug adapters and configurations
+---@field setup? fun() Anything else (filetypes, autocmds)
 local M = {}
 
+---@type config.LangSpec[]?
 local specs
 
----@return table[]
+--- Load every spec in lua/lang/, once.
+---@return config.LangSpec[]
 function M.specs()
 	if not specs then
 		specs = {}
@@ -52,6 +56,18 @@ function M.map(field)
 		result = vim.tbl_deep_extend("force", result, spec[field] or {})
 	end
 	return result
+end
+
+--- Run every spec's `setup` hook. Call after completion and LSP are configured.
+function M.setup()
+	for _, spec in ipairs(M.specs()) do
+		if spec.setup then
+			local ok, err = pcall(spec.setup)
+			if not ok then
+				vim.notify("Language setup failed: " .. err, vim.log.levels.ERROR)
+			end
+		end
+	end
 end
 
 return M

@@ -1,10 +1,10 @@
+-- Cache compiled Lua modules for faster startup
+vim.loader.enable()
+
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("config.commands")
 require("config.diagnostics")
 require("config.loader")
 require("config.plugins")
-
-vim.api.nvim_create_user_command("Pack", function()
-	require("config.pack-ui").open()
-end, { desc = "Open vim.pack UI" })

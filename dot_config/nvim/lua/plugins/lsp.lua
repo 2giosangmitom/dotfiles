@@ -7,7 +7,15 @@ do
 		{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	})
 
-	require("mason").setup()
+	require("mason").setup({
+		ui = {
+			icons = {
+				package_installed = require("config.icons").get("PackageInstalled"),
+				package_pending = require("config.icons").get("PackagePending"),
+				package_uninstalled = require("config.icons").get("PackageUninstalled"),
+			},
+		},
+	})
 
 	local lang = require("config.lang")
 
@@ -39,13 +47,42 @@ vim.pack.add({
 require("blink.cmp").setup({
 	keymap = { preset = "super-tab" },
 	fuzzy = { implementation = "lua" },
-	sources = {
-		default = { "lsp", "path", "buffer", "snippets", "sqmeow" },
-		providers = {
-			sqmeow = {
-				name = "Sqmeow",
-				module = "sqmeow.completion.blink",
+	completion = {
+		menu = {
+			scrollbar = false,
+			draw = {
+				columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
+				-- Kind icons from mini.icons, so they match the rest of the UI.
+				components = {
+					kind_icon = {
+						text = function(ctx)
+							return (MiniIcons.get("lsp", ctx.kind)) .. ctx.icon_gap
+						end,
+						highlight = function(ctx)
+							return select(2, MiniIcons.get("lsp", ctx.kind))
+						end,
+					},
+					kind = {
+						highlight = function(ctx)
+							return select(2, MiniIcons.get("lsp", ctx.kind))
+						end,
+					},
+				},
 			},
+		},
+		documentation = { auto_show = true, auto_show_delay_ms = 200 },
+	},
+	signature = { enabled = true },
+	sources = {
+		default = function()
+			local sources = { "lsp", "path", "buffer", "snippets" }
+			if Config.has_local("sqmeow.nvim") then
+				table.insert(sources, "sqmeow")
+			end
+			return sources
+		end,
+		providers = {
+			sqmeow = { name = "Sqmeow", module = "sqmeow.completion.blink" },
 		},
 	},
 })
@@ -66,11 +103,7 @@ do
 
 	require("config.lsp").setup()
 
-	for _, spec in ipairs(lang.specs()) do
-		if spec.setup then
-			spec.setup()
-		end
-	end
+	lang.setup()
 
 	-- Server options live in after/lsp/<server>.lua.
 	vim.lsp.enable(servers)
@@ -87,6 +120,13 @@ do
 	conform.setup({
 		formatters_by_ft = require("config.lang").map("formatters"),
 		default_format_opts = { lsp_format = "fallback" },
+		-- Toggle globally with <leader>uf, or per buffer with `vim.b.disable_autoformat`.
+		format_on_save = function(bufnr)
+			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+				return
+			end
+			return { timeout_ms = 1000 }
+		end,
 	})
 
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

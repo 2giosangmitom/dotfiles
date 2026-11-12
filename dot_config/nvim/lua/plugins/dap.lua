@@ -5,7 +5,7 @@ vim.pack.add({
 
 local dap = require("dap")
 local dap_view = require("dap-view")
-local icons = require("config.icons").dap
+local icons = require("config.icons")
 
 -- Open the view when a session starts and close it when the session ends.
 dap_view.setup({ auto_toggle = true })
@@ -19,11 +19,11 @@ end
 
 vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 local signs = {
-	DapBreakpoint = { icons.Breakpoint, "DiagnosticError" },
-	DapBreakpointCondition = { icons.BreakpointCondition, "DiagnosticWarn" },
-	DapBreakpointRejected = { icons.BreakpointRejected, "DiagnosticError" },
-	DapLogPoint = { icons.LogPoint, "DiagnosticInfo" },
-	DapStopped = { icons.Stopped, "DiagnosticWarn", "DapStoppedLine" },
+	DapBreakpoint = { icons.get("DapBreakpoint"), "DiagnosticError" },
+	DapBreakpointCondition = { icons.get("DapBreakpointCondition"), "DiagnosticWarn" },
+	DapBreakpointRejected = { icons.get("DapBreakpointRejected"), "DiagnosticError" },
+	DapLogPoint = { icons.get("DapLogPoint"), "DiagnosticInfo" },
+	DapStopped = { icons.get("DapStopped"), "DiagnosticWarn", "DapStoppedLine" },
 }
 for name, sign in pairs(signs) do
 	vim.fn.sign_define(name, { text = sign[1], texthl = sign[2], linehl = sign[3], numhl = sign[3] })

@@ -5,6 +5,7 @@ vim.pack.add({
 -- rustaceanvim starts rust-analyzer itself, so it is not listed in `servers`.
 -- It uses the toolchain's rust-analyzer from PATH, and finds Mason's codelldb for DAP.
 -- Formatting falls back to rust-analyzer (rustfmt).
+---@type config.LangSpec
 return {
 	tools = { "codelldb" },
 	parsers = { "rust" },

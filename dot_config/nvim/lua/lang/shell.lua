@@ -1,6 +1,7 @@
+---@type config.LangSpec
 return {
 	servers = { "bashls" },
-	tools = { "bash-language-server", "shfmt", "shellcheck" },
+	tools = { "shfmt", "shellcheck" },
 	parsers = { "bash" },
 	formatters = {
 		sh = { "shfmt" },

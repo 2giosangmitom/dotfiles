@@ -1,6 +1,10 @@
--- JavaScript and TypeScript
+--- JavaScript and TypeScript.
 local filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 
+--- Map every JS/TS filetype to the same value.
+---@generic T
+---@param value T
+---@return table<string, T>
 local function by_filetype(value)
 	local result = {}
 	for _, ft in ipairs(filetypes) do
@@ -9,8 +13,7 @@ local function by_filetype(value)
 	return result
 end
 
-local dap_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-
+---@type config.LangSpec
 return {
 	servers = { "vtsls" },
 	tools = { "oxfmt", "oxlint", "js-debug-adapter" },
@@ -30,7 +33,7 @@ return {
 			callback(dap.adapters["pwa-node"])
 		end
 
-		for _, ft in ipairs(dap_filetypes) do
+		for _, ft in ipairs(filetypes) do
 			dap.configurations[ft] = {
 				{
 					type = "pwa-node",

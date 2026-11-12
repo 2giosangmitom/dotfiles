@@ -1,3 +1,4 @@
+---@type config.LangSpec
 return {
 	servers = { "jsonls" },
 	tools = { "oxfmt" },

@@ -1,6 +1,7 @@
+---@type config.LangSpec
 return {
 	servers = { "cssls" },
-	tools = { "css-lsp", "oxfmt" },
+	tools = { "oxfmt" },
 	parsers = { "css", "scss" },
 	formatters = {
 		css = { "oxfmt" },
