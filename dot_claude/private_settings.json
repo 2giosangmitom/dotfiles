@@ -1,0 +1,18 @@
+{
+  "model": "opus",
+  "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
+  "pluginConfigs": {
+    "cc-plugin-agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-or-agents-md"
+      }
+    }
+  },
+  "autoMemoryEnabled": false,
+  "theme": "dark",
+  "editorMode": "vim",
+  "verbose": false,
+  "autoCompactEnabled": true,
+  "agentPushNotifEnabled": true
+}
