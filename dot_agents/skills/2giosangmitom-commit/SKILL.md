@@ -40,7 +40,7 @@ git diff
 
 - If changes are already staged, commit only those changes. Do not stage unstaged changes.
 - If no changes are staged, run `git add -A`.
-- Never stage files that may contain secrets: `.env*`, `*.pem`, `*.key`, `credentials*`, `*token*`. If any are already staged, unstage them and report the excluded files.
+- Never stage files that may contain secrets: `.env*` (except `.env.example`), `*.pem`, `*.key`, `credentials*`, `*token*`. If any are already staged, unstage them and report the excluded files.
 - If there are no changes, stop.
 - Review `git diff --cached` after staging. Ensure no unintended or sensitive files are included before committing.
 

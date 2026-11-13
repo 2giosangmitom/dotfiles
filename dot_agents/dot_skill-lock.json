@@ -6,10 +6,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/blader/humanizer.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0",
+      "skillFolderHash": "b48c832f0f809c1b5658edbb838c2521b72f2413",
       "pluginName": "humanizer",
       "installedAt": "2026-11-06T02:35:39.902Z",
-      "updatedAt": "2026-11-06T02:35:39.902Z"
+      "updatedAt": "2026-11-13T12:49:13.353Z"
     },
     "find-skills": {
       "source": "vercel-labs/skills",
@@ -25,9 +25,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "skillFolderHash": "29ba9c12789b1c54ab76ad40e2472e646d141b85",
+      "skillFolderHash": "d75a393c9a371295c6d6be46c34938e76ef21184",
       "installedAt": "2026-11-06T04:34:51.898Z",
-      "updatedAt": "2026-11-06T04:34:51.898Z"
+      "updatedAt": "2026-11-13T12:49:13.384Z"
     },
     "caveman": {
       "source": "JuliusBrussee/caveman",
@@ -37,6 +37,15 @@
       "skillFolderHash": "b314dd99b2b8723aae2de5a22079914567f2e58f",
       "installedAt": "2026-11-08T06:33:37.655Z",
       "updatedAt": "2026-11-08T06:33:37.655Z"
+    },
+    "tuicr": {
+      "source": "agavra/tuicr",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/agavra/tuicr.git",
+      "skillPath": "skills/tuicr/SKILL.md",
+      "skillFolderHash": "575bb532c0631feb7d1833cb86795d76f3296aff",
+      "installedAt": "2026-11-13T12:47:28.261Z",
+      "updatedAt": "2026-11-13T12:47:28.261Z"
     }
   },
   "dismissed": {
