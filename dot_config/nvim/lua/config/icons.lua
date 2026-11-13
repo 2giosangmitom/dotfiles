@@ -8,7 +8,7 @@ local icons = {
 	-- Diagnostics
 	DiagnosticError = "󰅜",
 	DiagnosticWarn = "󰀦",
-	DiagnosticInfo = "󰧞",
+	DiagnosticInfo = "",
 	DiagnosticHint = "󰛨",
 	-- Git status
 	GitBranch = "󰘬",
@@ -30,11 +30,11 @@ local icons = {
 	GitSignUntracked = "┆",
 	-- Debugging
 	Debugger = "",
-	DapBreakpoint = "󰧞",
-	DapBreakpointCondition = "󰜋",
-	DapBreakpointRejected = "󰅜",
-	DapLogPoint = "󰨓",
-	DapStopped = "",
+	DapBreakpoint = "",
+	DapBreakpointCondition = "",
+	DapBreakpointRejected = "",
+	DapLogPoint = ".>",
+	DapStopped = "󰁕",
 	-- Files and folders
 	FileModified = "●",
 	FileNew = "󰐖",
@@ -50,16 +50,16 @@ local icons = {
 	FoldOpened = "󰍝",
 	ArrowRight = "󰜴",
 	-- Packages (mason.nvim) and plugins (:Pack)
-	PackageInstalled = "󰸞",
+	PackageInstalled = "󰗠",
 	PackagePending = "󰜮",
-	PackageUninstalled = "󰧟",
-	PluginLoaded = "󰧞",
-	PluginInactive = "󰧟",
+	PackageUninstalled = "",
+	PluginLoaded = "",
+	PluginInactive = "",
 	PluginUpdate = "󰜷",
 	PluginBreaking = "󰀦",
 	-- General
 	Buffer = "󰈙",
-	Check = "󰸞",
+	Check = "󰗠",
 	Code = "󰅩",
 	Search = "󰍉",
 	Settings = "󰒓",
