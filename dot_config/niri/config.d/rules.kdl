@@ -67,3 +67,20 @@ layer-rule {
   match namespace="^noctalia-backdrop"
   place-within-backdrop true
 }
+
+// Recordly HUD is a transparent overlay: no blur, focus ring, or shadow.
+window-rule {
+  match app-id="^recordly$"
+  background-effect {
+    blur false
+  }
+  focus-ring {
+    off
+  }
+  border {
+    off
+  }
+  shadow {
+    off
+  }
+}
