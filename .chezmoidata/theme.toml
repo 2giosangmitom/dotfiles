@@ -1,0 +1,217 @@
+# Theme palettes: the single source of truth for every themed app.
+#
+# Colors come from nightfall.nvim (~/Workspace/nightfall.nvim). Each flavor has
+# the same keys, so templates can use any of them without knowing the flavor:
+#
+#   bg / fg / fg_dim / fg_bright   main background and text
+#   crust                          darkest shade; text on colored backgrounds
+#   surface / selection / border   raised panels, selected rows, separators
+#   muted                          de-emphasized text (symlinks, hints)
+#   accent / hover / pink          focus color, hover state, secondary highlight
+#   search / peach                 search match and line indicator backgrounds
+#   normal / bright / dim          the 8 ANSI terminal colors at each intensity
+#
+# The active flavor is read from `state_file` (written by mitom-theme-switch)
+# and falls back to `default`. Templates load it with:
+#
+#   {{- $flavor := includeTemplate "theme/flavor" . -}}
+#   {{- $t := index .theme.flavors $flavor -}}
+
+[theme]
+default = "nightfall"
+state_file = ".config/nightfall/theme"
+
+# Targets re-applied by mitom-theme-switch. Add a path here when you theme a
+# new app.
+targets = [
+  ".config/alacritty/theme.toml",
+  ".config/lazygit/config.yml",
+  ".config/niri/layout.kdl",
+  ".config/noctalia/noctalia-config.toml",
+  ".config/noctalia/palettes",
+  ".config/yazi/theme.toml",
+]
+
+[theme.flavors.nightfall]
+bg        = "#141423"
+fg        = "#e9e9f4"
+fg_dim    = "#c5c5de"
+fg_bright = "#f7f7fb"
+crust     = "#0a0a12"
+surface   = "#23233d"
+selection = "#2d2d4e"
+border    = "#3b3b66"
+muted     = "#7b7bb5"
+accent    = "#9a86fd"
+hover     = "#bd93f9"
+pink      = "#dd9ac2"
+search    = "#edf7d2"
+peach     = "#f7dba7"
+
+[theme.flavors.nightfall.normal]
+black   = "#0a0a12"
+red     = "#ff4860"
+green   = "#50fa7b"
+yellow  = "#f1fa8c"
+blue    = "#8caaee"
+magenta = "#9a86fd"
+cyan    = "#8be9fd"
+white   = "#c5c5de"
+
+[theme.flavors.nightfall.bright]
+black   = "#55558f"
+red     = "#ff6e6e"
+green   = "#a1e44d"
+yellow  = "#fcc737"
+blue    = "#2cccff"
+magenta = "#e2adf2"
+cyan    = "#20e3b2"
+white   = "#f7f7fb"
+
+[theme.flavors.nightfall.dim]
+black   = "#0d0d16"
+red     = "#c43b51"
+green   = "#41c165"
+yellow  = "#bac172"
+blue    = "#6e85bb"
+magenta = "#796ac7"
+cyan    = "#6db4c7"
+white   = "#9999af"
+
+[theme.flavors.deeper-night]
+bg        = "#0e131b"
+fg        = "#f8e9e9"
+fg_dim    = "#c9c9c9"
+fg_bright = "#ffffff"
+crust     = "#05080c"
+surface   = "#1c2331"
+selection = "#262e40"
+border    = "#3a4360"
+muted     = "#7071b5"
+accent    = "#89b4fa"
+hover     = "#c2aff0"
+pink      = "#ceabb1"
+search    = "#edf7d2"
+peach     = "#f7dba7"
+
+[theme.flavors.deeper-night.normal]
+black   = "#05080c"
+red     = "#ff5e5b"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#b5ffe9"
+white   = "#c9c9c9"
+
+[theme.flavors.deeper-night.bright]
+black   = "#4c5480"
+red     = "#eb87a3"
+green   = "#a5cc6b"
+yellow  = "#fcc737"
+blue    = "#94e2d5"
+magenta = "#e2adf2"
+cyan    = "#72bda3"
+white   = "#ffffff"
+
+[theme.flavors.deeper-night.dim]
+black   = "#070b10"
+red     = "#c34b4b"
+green   = "#80af80"
+yellow  = "#beae8a"
+blue    = "#6a8cc2"
+magenta = "#9c81c0"
+cyan    = "#8bc4b6"
+white   = "#9a9c9e"
+
+[theme.flavors.maron]
+bg        = "#121518"
+fg        = "#f5f5dc"
+fg_dim    = "#c0c5c1"
+fg_bright = "#ffffff"
+crust     = "#07090b"
+surface   = "#22262b"
+selection = "#2d3238"
+border    = "#414850"
+muted     = "#6b818c"
+accent    = "#eddfe0"
+hover     = "#eddfe0"
+pink      = "#b796ac"
+search    = "#d5ddbc"
+peach     = "#f7dba7"
+
+[theme.flavors.maron.normal]
+black   = "#07090b"
+red     = "#ff6969"
+green   = "#8eb486"
+yellow  = "#ffd95a"
+blue    = "#9ed0e6"
+magenta = "#d18ce0"
+cyan    = "#8be9fd"
+white   = "#c0c5c1"
+
+[theme.flavors.maron.bright]
+black   = "#586269"
+red     = "#e76b74"
+green   = "#9bc995"
+yellow  = "#fcc737"
+blue    = "#82a7a6"
+magenta = "#e2adf2"
+cyan    = "#a6cdc6"
+white   = "#ffffff"
+
+[theme.flavors.maron.dim]
+black   = "#0a0c0e"
+red     = "#c45455"
+green   = "#6f8c6b"
+yellow  = "#c4a84a"
+blue    = "#7ba1b3"
+magenta = "#a16eae"
+cyan    = "#6db4c4"
+white   = "#959997"
+
+[theme.flavors.winter]
+bg        = "#F7F9FC"
+fg        = "#273548"
+fg_dim    = "#465568"
+fg_bright = "#111B29"
+crust     = "#17202D"
+surface   = "#FFFFFF"
+selection = "#C4D2E4"
+border    = "#D3DCE8"
+muted     = "#647386"
+accent    = "#245EA8"
+hover     = "#5865C7"
+pink      = "#9C466D"
+search    = "#6B5B24"
+peach     = "#9A4E28"
+
+[theme.flavors.winter.normal]
+black   = "#17202D"
+red     = "#B4233C"
+green   = "#287A45"
+yellow  = "#8A6500"
+blue    = "#2B6CB0"
+magenta = "#5B4BB7"
+cyan    = "#087F9B"
+white   = "#465568"
+
+[theme.flavors.winter.bright]
+black   = "#8A98A9"
+red     = "#B9384B"
+green   = "#5E7D20"
+yellow  = "#8A5A00"
+blue    = "#245EA8"
+magenta = "#7D3C98"
+cyan    = "#187A70"
+white   = "#111B29"
+
+[theme.flavors.winter.dim]
+black   = "#4f5661"
+red     = "#c5596c"
+green   = "#5c9a73"
+yellow  = "#a58a3f"
+blue    = "#5e8fc3"
+magenta = "#8277c8"
+cyan    = "#449eb3"
+white   = "#727e8d"

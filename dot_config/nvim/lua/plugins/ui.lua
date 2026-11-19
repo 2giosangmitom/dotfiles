@@ -4,8 +4,11 @@
 Config.add_local("sqmeow.nvim")
 Config.add_local("nightfall.nvim")
 
--- Colorscheme (falls back to the built-in default if nightfall is unavailable)
-if not pcall(vim.cmd.colorscheme, "deeper-night") then
+-- Colorscheme: follow the flavor chosen with `mitom-theme-switch` so nvim matches
+-- the terminal and desktop. Falls back to the built-in default if nightfall is unavailable.
+local ok, state = pcall(vim.fn.readfile, vim.fn.expand("~/.config/nightfall/theme"), "", 1)
+local flavor = ok and state[1] and vim.trim(state[1]) or "nightfall"
+if not pcall(vim.cmd.colorscheme, flavor) then
 	vim.cmd.colorscheme("default")
 end
 

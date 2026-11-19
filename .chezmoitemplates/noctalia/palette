@@ -1,0 +1,39 @@
+{{- /* Noctalia custom palette. Called with one flavor table from .chezmoidata/theme.toml as the dot. */ -}}
+{
+  "dark": {
+    "mPrimary": "{{ .normal.magenta }}",
+    "mOnPrimary": "{{ .crust }}",
+    "mSecondary": "{{ .bright.blue }}",
+    "mOnSecondary": "{{ .crust }}",
+    "mTertiary": "{{ .bright.magenta }}",
+    "mOnTertiary": "{{ .crust }}",
+    "mError": "{{ .normal.red }}",
+    "mOnError": "{{ .crust }}",
+    "mSurface": "{{ .bg }}",
+    "mOnSurface": "{{ .fg }}",
+    "mSurfaceVariant": "{{ .surface }}",
+    "mOnSurfaceVariant": "{{ .fg_dim }}",
+    "mOutline": "{{ .border }}",
+    "mShadow": "{{ .crust }}",
+    "mHover": "{{ .hover }}",
+    "mOnHover": "{{ .crust }}",
+    "terminal": {
+      "foreground": "{{ .fg }}",
+      "background": "{{ .bg }}",
+      "selectionFg": "{{ .fg }}",
+      "selectionBg": "{{ .selection }}",
+      "cursorText": "{{ .bg }}",
+      "cursor": "{{ .fg }}",
+{{- $ansi := list "black" "red" "green" "yellow" "blue" "magenta" "cyan" "white" }}
+{{- range $i, $group := list "normal" "bright" }}
+{{- if $i }},{{ end }}
+      "{{ $group }}": {
+{{- $c := index $ $group }}
+{{- range $j, $name := $ansi }}
+        "{{ $name }}": "{{ index $c $name }}"{{ if lt $j 7 }},{{ end }}
+{{- end }}
+      }
+{{- end }}
+    }
+  }
+}

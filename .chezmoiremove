@@ -1,0 +1,5 @@
+# Per-flavor Alacritty themes replaced by the generated ~/.config/alacritty/theme.toml.
+.config/alacritty/themes/deeper-night.toml
+.config/alacritty/themes/maron.toml
+.config/alacritty/themes/nightfall.toml
+.config/alacritty/themes/winter.toml

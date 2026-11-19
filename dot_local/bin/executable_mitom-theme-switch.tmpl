@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Switch the theme flavor for every themed app.
+# Flavors and targets come from .chezmoidata/theme.toml; edit them there.
+
+set -eu
+
+{{ $flavors := keys .theme.flavors | sortAlpha -}}
+flavors=({{ $flavors | join " " }})
+default={{ .theme.default | quote }}
+state_file="$HOME/{{ .theme.state_file }}"
+targets=(
+{{- range .theme.targets }}
+  "$HOME/{{ . }}"
+{{- end }}
+)
+
+usage() {
+  printf 'Usage: mitom-theme-switch [%s|--list]\n' "$(
+    IFS='|'
+    printf '%s' "${flavors[*]}"
+  )" >&2
+}
+
+if [ "$#" -eq 0 ]; then
+  if [ -f "$state_file" ]; then
+    cat "$state_file"
+  else
+    printf '%s\n' "$default"
+  fi
+  exit 0
+fi
+
+if [ "$#" -ne 1 ]; then
+  usage
+  exit 2
+fi
+
+case "$1" in
+--list)
+  printf '%s\n' "${flavors[@]}"
+  exit 0
+  ;;
+-h | --help)
+  usage
+  exit 0
+  ;;
+esac
+
+found=0
+for flavor in "${flavors[@]}"; do
+  [ "$flavor" = "$1" ] && found=1
+done
+if [ "$found" -eq 0 ]; then
+  printf 'Unknown theme flavor: %s\n' "$1" >&2
+  usage
+  exit 2
+fi
+
+mkdir -p "$(dirname "$state_file")"
+printf '%s\n' "$1" >"$state_file"
+chezmoi apply "${targets[@]}"

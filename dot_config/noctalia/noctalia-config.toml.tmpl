@@ -1,15 +1,10 @@
-{{- $themeFile := joinPath .chezmoi.homeDir ".config/nightfall/theme" -}}
-{{- $flavor := "nightfall" -}}
-{{- if stat $themeFile -}}
-  {{- $flavor = trim (output "cat" $themeFile) -}}
-{{- end -}}
-{{- if not (has $flavor (list "nightfall" "deeper-night" "maron" "winter")) -}}
-  {{- fail (printf "Unknown Nightfall theme: %s" $flavor) -}}
-{{- end -}}
+{{- $flavor := includeTemplate "theme/flavor" . -}}
+{{- $t := index .theme.flavors $flavor -}}
 [theme]
 mode = "dark"
 source = "custom"
-custom_palette = "{{ if eq $flavor "nightfall" }}nightfall{{ else }}nightfall-{{ $flavor }}{{ end }}"
+# Palettes live in palettes/*.json, generated from .chezmoidata/theme.toml.
+custom_palette = "nightfall{{ if ne $flavor "nightfall" }}-{{ $flavor }}{{ end }}"
 
 [shell.screenshot]
 save_to_file = true

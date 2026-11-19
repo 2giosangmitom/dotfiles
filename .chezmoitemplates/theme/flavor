@@ -1,0 +1,17 @@
+{{- /*
+  Print the active theme flavor name: the one saved in .theme.state_file,
+  else .theme.default. Fails on a name not in .theme.flavors.
+
+  Usage (top of any themed template):
+    {{- $flavor := includeTemplate "theme/flavor" . -}}
+    {{- $t := index .theme.flavors $flavor -}}
+*/ -}}
+{{- $flavor := .theme.default -}}
+{{- $stateFile := joinPath .chezmoi.homeDir .theme.state_file -}}
+{{- if stat $stateFile -}}
+{{-   $flavor = include $stateFile | trim -}}
+{{- end -}}
+{{- if not (hasKey .theme.flavors $flavor) -}}
+{{-   fail (printf "Unknown theme flavor %q in %s (expected one of: %s)" $flavor $stateFile (keys .theme.flavors | sortAlpha | join ", ")) -}}
+{{- end -}}
+{{- $flavor -}}

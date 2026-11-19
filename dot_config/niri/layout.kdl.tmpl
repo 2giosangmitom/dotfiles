@@ -1,3 +1,5 @@
+{{- $flavor := includeTemplate "theme/flavor" . -}}
+{{- $t := index .theme.flavors $flavor -}}
 layout {
   gaps 16
   center-focused-column "never"
@@ -6,8 +8,8 @@ layout {
 
   focus-ring {
     width 2
-    active-color "#7fc8ff"
-    inactive-color "#505050"
+    active-color "{{ $t.accent }}"
+    inactive-color "{{ $t.border }}"
   }
 
   border {
