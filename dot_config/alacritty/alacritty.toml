@@ -6,7 +6,7 @@ import = ["~/.config/alacritty/theme.toml"]
 TERM = "xterm-256color"
 
 [window]
-decorations = "None"
+decorations = "none"
 opacity = 0.8
 blur = true
 
@@ -15,6 +15,3 @@ normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 size = 14
-
-[terminal]
-shell = "bash"

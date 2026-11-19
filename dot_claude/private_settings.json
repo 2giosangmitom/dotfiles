@@ -15,7 +15,7 @@
     }
   },
   "autoMemoryEnabled": false,
-  "theme": "dark",
+  "theme": "auto",
   "editorMode": "vim",
   "verbose": false,
   "autoCompactEnabled": true,
