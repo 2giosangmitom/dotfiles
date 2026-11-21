@@ -6,10 +6,11 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/blader/humanizer.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "b48c832f0f809c1b5658edbb838c2521b72f2413",
+      "skillFolderHash": "a32f24407364c74c812b43c15926d638bee1e072",
       "pluginName": "humanizer",
       "installedAt": "2026-11-06T02:35:39.902Z",
-      "updatedAt": "2026-11-13T12:49:13.353Z"
+      "updatedAt": "2026-11-20T02:38:42.975Z",
+      "commit": "a32f24407364c74c812b43c15926d638bee1e072"
     },
     "find-skills": {
       "source": "vercel-labs/skills",
