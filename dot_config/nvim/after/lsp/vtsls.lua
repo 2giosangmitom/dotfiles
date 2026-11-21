@@ -1,9 +1,12 @@
 local filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-local vue_plugin = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_server = require("config.mise").where("npm:@vue/language-server")
+-- mise's npm backend hoists dependencies here, so tsserver can resolve
+-- @vue/typescript-plugin from this location.
+local vue_plugin = vue_server and vue_server .. "/node_modules/.mise"
 local global_plugins = {}
 
--- Vue support uses the TypeScript plugin bundled with Mason's vue-language-server.
-if vim.uv.fs_stat(vue_plugin) then
+-- Vue support uses the TypeScript plugin installed with mise's vue-language-server.
+if vue_plugin and vim.uv.fs_stat(vue_plugin .. "/node_modules/@vue/typescript-plugin") then
 	table.insert(filetypes, "vue")
 	table.insert(global_plugins, {
 		name = "@vue/typescript-plugin",

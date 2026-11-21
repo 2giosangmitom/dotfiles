@@ -3,7 +3,6 @@
 ---@type config.LangSpec
 return {
 	servers = { "clangd" },
-	tools = { "codelldb" },
 	parsers = { "c", "cpp" },
 	setup = function()
 		-- nvim-lspconfig's clangd on_attach defines the command, so map it on attach

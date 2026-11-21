@@ -3,7 +3,6 @@
 
 ---@class config.LangSpec
 ---@field servers? string[] LSP server names to enable (configs live in after/lsp/)
----@field tools? string[] Extra Mason packages (formatters, linters, debuggers)
 ---@field parsers? string[] Treesitter parsers
 ---@field formatters? table<string, string[]> conform.nvim formatters by filetype
 ---@field linters? table<string, string[]> nvim-lint linters by filetype

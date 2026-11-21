@@ -49,10 +49,7 @@ local icons = {
 	FoldClosed = "󰍟",
 	FoldOpened = "󰍝",
 	ArrowRight = "󰜴",
-	-- Packages (mason.nvim) and plugins (:Pack)
-	PackageInstalled = "󰗠",
-	PackagePending = "󰜮",
-	PackageUninstalled = "",
+	-- Plugins (:Pack)
 	PluginLoaded = "",
 	PluginInactive = "",
 	PluginUpdate = "󰜷",

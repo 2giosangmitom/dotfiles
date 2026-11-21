@@ -42,7 +42,7 @@ end
 ---@type fun(f: config.Callback)
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
 
-local local_dir = vim.fn.expand("~/Workspace")
+local local_dir = vim.fn.expand("~/Projects")
 
 --- Whether a local plugin checkout exists in ~/Workspace.
 ---@param name string Directory name, e.g. `"nightfall.nvim"`.

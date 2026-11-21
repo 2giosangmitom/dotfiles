@@ -1,0 +1,44 @@
+[settings]
+pipx.uvx = true
+
+[tools]
+node = "latest"
+pnpm = "latest"
+uv = "latest"
+java = "temurin-25"
+
+# LSP servers
+"github:clangd/clangd" = { version = "latest", asset_pattern = "clangd-linux-*.zip" }
+"npm:vscode-langservers-extracted" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:@microsoft/compose-language-service" = "latest"
+"npm:bash-language-server" = "latest"
+"npm:@vtsls/language-server" = "latest"
+"npm:@vue/language-server" = "3.2.4"
+"npm:yaml-language-server" = "latest"
+lua-language-server = "latest"
+ruff = "latest"
+ty = "latest"
+tombi = "latest"
+"http:jdtls" = { version = "1.63.0", url = "https://download.eclipse.org/jdtls/milestones/1.63.0/jdt-language-server-1.63.0-202610191322.tar.gz" }
+"http:lombok" = { version = "1.18.48", url = "https://repo1.maven.org/maven2/org/projectlombok/lombok/{{ version }}/lombok-{{ version }}.jar" }
+
+# Formatters and linters
+stylua = "latest"
+shfmt = "latest"
+shellcheck = "latest"
+hadolint = "latest"
+oxfmt = "latest"
+oxlint = "latest"
+
+# Neovim
+tree-sitter = "latest" # nvim-treesitter builds parsers with it
+
+# Debug adapters
+"pipx:debugpy" = "latest"
+"github:vadimcn/codelldb" = { version = "latest", asset_pattern = "codelldb-linux-x64.vsix", bin_path = "extension/adapter" }
+"github:microsoft/vscode-js-debug" = { version = "latest", asset_pattern = "js-debug-dap-*.tar.gz" }
+# VS Code extensions loaded into jdtls as bundles (published on Open VSX only).
+"http:vscode-java-debug" = { version = "0.60.0", url = "https://open-vsx.org/api/vscjava/vscode-java-debug/{{ version }}/file/vscjava.vscode-java-debug-{{ version }}.vsix", format = "zip" }
+"http:vscode-java-test" = { version = "0.47.0", url = "https://open-vsx.org/api/vscjava/vscode-java-test/{{ version }}/file/vscjava.vscode-java-test-{{ version }}.vsix", format = "zip" }
+agent-browser = "latest"

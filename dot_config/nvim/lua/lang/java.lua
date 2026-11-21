@@ -1,5 +1,6 @@
 --- Java, via nvim-jdtls. jdtls is started by nvim-jdtls rather than
---- vim.lsp.enable, so it is listed under `tools` instead of `servers`.
+--- vim.lsp.enable, so it is not listed under `servers`. jdtls, lombok and the
+--- java-debug/java-test bundles are installed by mise.
 --- nvim-jdtls also registers the `java` debug adapter with nvim-dap,
 --- discovers main classes when a debug session starts (:DapNew), and adds the
 --- :Jdt* commands (:JdtUpdateConfig, :JdtRestart, :JdtBytecode, :JdtJshell...).
@@ -8,7 +9,7 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-jdtls" },
 })
 
-local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+local mise = require("config.mise")
 
 -- Build files take priority over .git, so a subproject in a monorepo is not
 -- mistaken for the repository root.
@@ -20,12 +21,10 @@ local root_markers = {
 --- java-debug and vscode-java-test plugins loaded into jdtls for DAP and tests.
 ---@return string[] jars
 local function bundles()
-	local result = vim.fn.glob(
-		mason_packages .. "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-		false,
-		true
-	)
-	for _, jar in ipairs(vim.fn.glob(mason_packages .. "/java-test/extension/server/*.jar", false, true)) do
+	local java_debug = mise.where("http:vscode-java-debug") or ""
+	local java_test = mise.where("http:vscode-java-test") or ""
+	local result = vim.fn.glob(java_debug .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", false, true)
+	for _, jar in ipairs(vim.fn.glob(java_test .. "/extension/server/*.jar", false, true)) do
 		local name = vim.fn.fnamemodify(jar, ":t")
 		-- These are not jdtls plugins, or duplicate bundles jdtls already provides.
 		if
@@ -150,8 +149,8 @@ end
 local function start_jdtls(args)
 	local root = vim.fs.root(args.buf, root_markers) or vim.fn.getcwd()
 	local cmd = { "jdtls" }
-	local lombok = mason_packages .. "/jdtls/lombok.jar"
-	if vim.uv.fs_stat(lombok) then
+	local lombok = vim.fn.glob((mise.where("http:lombok") or "") .. "/lombok-*.jar", false, true)[1]
+	if lombok then
 		table.insert(cmd, "--jvm-arg=-javaagent:" .. lombok)
 	end
 	-- One workspace per project, keyed by its root path. Kept in the data
@@ -184,7 +183,6 @@ end
 
 ---@type config.LangSpec
 return {
-	tools = { "jdtls", "java-debug-adapter", "java-test" },
 	parsers = { "java" },
 	setup = function()
 		vim.api.nvim_create_autocmd("FileType", {

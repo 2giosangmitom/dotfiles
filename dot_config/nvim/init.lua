@@ -2,6 +2,7 @@
 vim.loader.enable()
 
 require("config.options")
+require("config.mise")
 require("config.keymaps")
 require("config.autocmds")
 require("config.commands")

@@ -16,16 +16,20 @@ end
 ---@type config.LangSpec
 return {
 	servers = { "vtsls" },
-	tools = { "oxfmt", "oxlint", "js-debug-adapter" },
 	parsers = { "javascript", "typescript", "tsx", "jsdoc" },
 	formatters = by_filetype({ "oxfmt" }),
 	linters = by_filetype({ "oxlint" }),
 	dap = function(dap)
+		-- js-debug ships a Node script, not an executable.
+		local js_debug = require("config.mise").where("github:microsoft/vscode-js-debug")
 		dap.adapters["pwa-node"] = {
 			type = "server",
 			host = "localhost",
 			port = "${port}",
-			executable = { command = "js-debug-adapter", args = { "${port}" } },
+			executable = {
+				command = "node",
+				args = { (js_debug or "") .. "/src/dapDebugServer.js", "${port}" },
+			},
 		}
 		-- Alias so launch.json files using type "node" work too.
 		dap.adapters.node = function(callback, config)

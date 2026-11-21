@@ -13,7 +13,8 @@ gestures {
   }
 }
 
-spawn-at-startup "noctalia"
+spawn-sh-at-startup "noctalia"
+spawn-sh-at-startup "fcitx5 -d"
 
 debug {
   honor-xdg-activation-with-invalid-serial
